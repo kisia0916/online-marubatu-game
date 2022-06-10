@@ -1,7 +1,8 @@
 let my_text = "";
 //write_text()
+
 window.onload = function(){
-    const canvas_1 = document.getElementById("canvas_2");
+    const canvas = document.getElementById("canvas");
     const ctx_1 = canvas.getContext('2d');
     console.log(my_turn);
     ctx_1.fillStyle = "#0ff";

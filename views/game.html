@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/route/style.css">
+</head>
+<body>
+    <div id = "canvas_weapper" style="text-align: center">
+        <canvas id = "canvas" width="600" height="800" class="canvas"></canvas>
+    </div>
+    <div id = "canvas_2" class = "canvas_2">
+        <canvas id = "canvas" width="200" height="200" class = canvas></canvas>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/route/game.js"></script>
+    <script src="/route/game_text.js"></script>
+    <script>
+        let socket = io();
+        let global_id;
+        let stage_1;
+        let my_room_id;
+        let mess_div = document.getElementById("mess_div");
+        let mess_p = document.createElement("p");
+        let canvas_2 = document.getElementById('canvas');
+        socket.on("test_send",(mess)=>{
+            console.log(mess);
+            console.log("unkoman");
+        })
+        socket.on("con_send",(mess)=>{
+            console.log("aaa"+mess);
+            //mess_p.textContent = "test_mess";
+            //mess_div.appendChild(mess_p);
+        })
+        global_id = window.sessionStorage.getItem(['k1']);
+        my_room_id = window.sessionStorage.getItem(['k2']);
+        console.log(global_id);
+        console.log(window.sessionStorage.getItem(['key3']));
+        console.log(window.sessionStorage.getItem(['key4']));
+        socket.emit("game_page_id",global_id);
+        //alert(global_id);
+        socket.on("disconnect_user",(mess)=>{
+            if (mess == global_id){
+                console.log("name:"+global_id);
+                socket.emit("distract",global_id);
+            }
+        });
+        let sever_mess;
+        setInterval("get_session()",3000);
+        function get_session(){
+            if (window.sessionStorage.getItem(['key3']) != null){
+                sever_mess = window.sessionStorage.getItem(['key3']);
+                socket.emit("stage_update",sever_mess,my_room_id);
+            }
+        }
+        socket.on("stage_update",(stage,room)=>{
+            console.log(stage);
+            if (room == my_room_id){
+                window.sessionStorage.setItem(['key3'],stage);
+            }
+        })
+        /*
+        function get_stage(){
+            if (stage_1 != window.sessionStorage.getItem(['key3'])){
+                stage_1 = window.sessionStorage.getItem(['key3']);
+                console.log(window.sessionStorage.getItem(['key3']));
+                socket.emit("stage_update",window.sessionStorage.getItem(['key3']),my_room_id);
+            }
+        }
+        */
+        /*
+        canvas_2.addEventListener("mouseup",()=>{
+            socket.emit("stage_update",sever_mess);
+        })
+        */
+        /**
+        socket.on("send_stage",(stage,room_id)=>{
+            //console.log(stage);
+            if (room_id == my_room_id){
+                window.sessionStorage.setItem(['key3'],stage);
+                //console.log(window.sessionStorage.getItem(['key3']));
+            }
+        })
+        */
+    </script>
+    
+</body>
+</html>

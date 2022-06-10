@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/route/style_2.css">
+</head>
+<body>
+        <h1 class="main_title">Online ○×Gmae</h1>
+        <div  class = "title_image">
+            <img src="/img/main.png" class="top_img">
+        </div>
+        <form id = "form" action="" class = "match_start_button">
+            <button class="btn-right-radius">Start Match</button>
+        </form>
+        <form id = "start_game" action="/game">
+            <input type = "hidden" id = "start_game">
+        </form>
+
+        <form id = "test_send_form" action="/game" method="post">
+            <input type = "hidden" id = "test_mess" name = "test_mess" value="unnko">
+        </form>
+        <div id = "messages" class = "mess"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+        let global_id = "";
+        let get_player = false;
+        let form = document.getElementById("form");
+        let mess = document.getElementById("messages");
+        let start_box = document.getElementById("start_game");
+        let mess_p = document.createElement("p");
+        let user_data_input = document.getElementById("user_name");
+        let test_send_form = document.getElementById("test_send_form");
+        let my_room_id = null;
+        form.addEventListener("submit",function(e){
+            e.preventDefault();
+            socket.emit("start_match");
+
+        });
+        socket.on("user_name",(name)=>{
+            console.log("gro1"+global_id);
+            console.log(name);
+            //ここでidを設定
+            if (global_id == ""){
+                global_id = name;
+                console.log("glo2"+global_id);
+            }
+            window.sessionStorage.setItem(['k1'],[global_id]);///ここでセッションにユーザー名入れてる
+        })
+        socket.on("start_user",(id)=>{
+            if (id == global_id){
+                console.log("test");
+                mess_p.textContent = "マッチングしています...";
+                mess.appendChild(mess_p);
+            }
+        });
+        socket.on("success_match",(player)=>{
+            for (let i = 0;1>=i;i++){
+                if (player[i] == global_id){
+                    mess_p.textContent = "マッチング成功！対戦を開始します";
+                    mess.appendChild(mess_p);
+                    get_player = true;
+                    console.log("global"+global_id);
+                    socket.emit("user_name",global_id);
+
+                }
+            }
+            /*
+            if (get_player == true){
+                start_box.submit();
+            }
+            */
+        });
+        socket.on("redirect_mypage",(player_list)=>{
+            socket.emit("post_user",global_id);
+            socket.emit("send_name",global_id);
+            socket.emit("send_name",global_id);
+            console.log(player_list);
+            for (let i= 0;player_list.length>i;i++){
+                if (player_list[i] == global_id){
+                    start_box.submit(); /////////////////////////////////
+                }
+            }
+
+        })
+        socket.on("success_match",(player)=>{
+            console.log("tst");
+            socket.emit("game_page",global_id);
+        });
+        socket.on("match_user",(users)=>{
+            for (let i = 0;users.length > i;i++){
+                console.log("user"+users[i]);
+                if (users[i] == global_id){
+                    socket.emit("test_match",global_id);
+                    console.log("aaa");
+                }
+            }
+        });
+        socket.on("matchdata",(data)=>{
+            for (let i = 0;data.length > i;i++){
+                if (global_id == data[i]){
+                    socket.emit("yes_data",global_id);
+                }
+            }
+        })
+        socket.on("send_user_id",(room_list)=>{
+            console.log("うんこ");
+            console.log(room_list);
+            if (room_list.player_1 == global_id || room_list.player_2 == global_id){
+                my_room_id = room_list.id;
+                console.log("room:"+my_room_id)
+                window.sessionStorage.setItem(['k2'],[my_room_id]);
+
+            }
+        })
+        ////成功！！！！
+        socket.on("play_num",(room_id,id_1,id_2,one,two)=>{
+            console.log("aaaa"+my_room_id);
+            if (my_room_id == room_id){
+                if (id_1 == global_id){
+                    console.log(1);
+                    window.sessionStorage.setItem(['key4'],one);
+
+                }
+                if (id_2 == global_id){
+                    console.log(2)
+                    window.sessionStorage.setItem(['key4'],two);
+
+                }
+                
+            }
+        })
+    </script>
+</body>
+</html>

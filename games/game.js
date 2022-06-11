@@ -94,11 +94,13 @@ function get_mouse_button_fun(){
 }
 function Jatch_win(){
     let count_2 = 0;
+    let count_3 = 0;
     for (let i = 0;2>=i;i++){
         for (let s = 0;2>=s;s++){
             if (game_stage[i][s] == 1 || game_stage[i][s] == 2){
                 count_2+=1;
-                if (count_2 == 9){
+                if (count_2 == 9 && count_3 == 0){
+                    count_3+=1;
                     alert_log_hikiwake()
                 }
             }

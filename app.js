@@ -232,7 +232,6 @@ io.on("connection",(Socket)=>{
                 console.log(conn_user.users);
             }
         })
-"send_user_id"
         Socket.on("user_name",(user_name)=>{
             test_name = "";
             test_name = user_name;

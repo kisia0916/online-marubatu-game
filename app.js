@@ -370,7 +370,7 @@ io.on("connection",(Socket_4)=>{
         console.log("///////")
     })
     Socket_4.on("test_data_send",(room_id,turn_8)=>{
-        console.log(room_id);
+        console.log("aaa"+room_id);
         console.log(turn_8);
         io.emit("test_data_send_2",room_id,turn_8);
     })

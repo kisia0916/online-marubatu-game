@@ -99,9 +99,10 @@ function Jatch_win(){
         for (let s = 0;2>=s;s++){
             if (game_stage[i][s] == 1 || game_stage[i][s] == 2){
                 count_2+=1;
-                if (count_2 == 9 && count_3 == 0){
-                    count_3+=1;
+                //console.log("tetetet"+count_3)
+                if (count_2 == 9){
                     alert_log_hikiwake()
+                    //location.href = "/"
                 }
             }
             if (s == 1){

@@ -70,14 +70,15 @@ function get_mouse_button_fun(){
         console.log("kkey"+turn)
         mouse_click = 1;
         if (my_turn == 1){
-                game_stage[mouse_list_y][mouse_list_x] = 1;
+            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+            game_stage[mouse_list_y][mouse_list_x] = 1;
                 //ban = 2;//
-                socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                
 
         }else if (my_turn == 2){
+            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                 game_stage[mouse_list_y][mouse_list_x] = 2;
                 //ban = 1;//
-                socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         }
         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         write_koma()

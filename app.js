@@ -97,7 +97,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: true }
 }))
-app.use("/route", express.static("route"));
+app.use("/games", express.static("games"));
 app.use("/img",express.static("img"));
 let room_list = [];
 let user_name_1;

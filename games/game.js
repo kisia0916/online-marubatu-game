@@ -65,19 +65,19 @@ function get_mouse(e){
 
 function get_mouse_button_fun(){
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
-        
+        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         console.log(turn);
         console.log("kkey"+turn)
         mouse_click = 1;
         if (my_turn == 1){
-            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
             game_stage[mouse_list_y][mouse_list_x] = 1;
+            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                 //ban = 2;//
                 
 
         }else if (my_turn == 2){
+            game_stage[mouse_list_y][mouse_list_x] = 2;
             socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
-                game_stage[mouse_list_y][mouse_list_x] = 2;
                 //ban = 1;//
         }
         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
@@ -86,6 +86,7 @@ function get_mouse_button_fun(){
         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
         console.log("stage"+window.sessionStorage.getItem(['key3']))
         console.log(game_stage)
+        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         
         //Jatch_win()
     }
@@ -277,7 +278,7 @@ function write_turn(){
     }
 
 }
-setInterval("main_program_2()",1000);
+setInterval("main_program_2()",10);
 function main_program_2(){
     if (win_count !=1){
         Jatch_win()

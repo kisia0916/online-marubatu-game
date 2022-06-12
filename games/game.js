@@ -202,7 +202,7 @@ function alert_log_win(){
         window.sessionStorage.setItem(['key3'],"");
         window.sessionStorage.setItem(['key4'],"");
         window.sessionStorage.setItem(['key5'],"");
-        location.href = "/"
+        location.href = "/";
     }
 }
 function alert_log_lose(){
@@ -213,7 +213,7 @@ function alert_log_lose(){
         window.sessionStorage.setItem(['key3'],"");
         window.sessionStorage.setItem(['key4'],"");
         window.sessionStorage.setItem(['key5'],"");
-        location.href = "/"
+        location.href = "/";
     }
 }
 function alert_log_hikiwake(){
@@ -224,7 +224,7 @@ function alert_log_hikiwake(){
         window.sessionStorage.setItem(['key3'],"");
         window.sessionStorage.setItem(['key4'],"");
         window.sessionStorage.setItem(['key5'],"");
-        location.href = "/"
+        location.href = "/";
     }
 }
 function write_koma(){

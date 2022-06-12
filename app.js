@@ -115,7 +115,6 @@ app.get("/",(req,res)=>{
     //console.log("t:"+global_user_id);
     req_1 = req;
     res_1 = res;
-"start_user"
 });
 io.on("connection",(Socket)=>{
     //接続処理
@@ -236,7 +235,6 @@ io.on("connection",(Socket)=>{
                 console.log(conn_user.users);
             }
         })
-"send_user_id"
         Socket.on("user_name",(user_name)=>{
             test_name = "";
             test_name = user_name;

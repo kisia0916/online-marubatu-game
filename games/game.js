@@ -101,20 +101,24 @@ function Jatch_win(){
             if (s == 1){
                 if (game_stage[i][s] == 1 && game_stage[i][s+1] == 1 && game_stage[i][s-1] == 1){
                     if (my_turn == 1){
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i][s] == 2 && game_stage[i][s+1] == 2 && game_stage[i][s-1] == 2){
                     if (my_turn == 2){
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -123,20 +127,24 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i][s] == 1 && game_stage[i+1][s] == 1 && game_stage[i-1][s] == 1){
                     if (my_turn == 1){
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i][s] == 2 && game_stage[i+1][s] == 2 && game_stage[i-1][s] == 2){
                     if (my_turn == 2){
+                       // write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -145,20 +153,24 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i-1][s-1] == 1 && game_stage[i][s] == 1 && game_stage[i+1][s+1] == 1){
                     if (my_turn == 1){
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i-1][s-1] == 2 && game_stage[i][s] == 2 && game_stage[i+1][s+1] == 2){
                     if (my_turn == 2){
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -167,20 +179,25 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i+1][s-1] == 1 && game_stage[i][s] == 1 && game_stage[i-1][s+1] == 1){
                     if (my_turn == 1){
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i+1][s-1] == 2 && game_stage[i][s] == 2 && game_stage[i-1][s+1] == 2){
                     if (my_turn == 2){
+                        //write_koma()
                         alert_log_win()
+
                         win_count =1;
                     }
                     if(my_turn ==1){
+                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -195,7 +212,6 @@ function up_button(){
 
 }
 function alert_log_win(){
-    write_koma()
     if (!alert('you win')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -206,7 +222,6 @@ function alert_log_win(){
     }
 }
 function alert_log_lose(){
-    write_koma()
     if (!alert('you lose')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -217,7 +232,6 @@ function alert_log_lose(){
     }
 }
 function alert_log_hikiwake(){
-    write_koma()
     if (!alert('draw')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -280,7 +294,7 @@ function write_turn(){
 }
 setInterval("main_program_2()",10);
 function main_program_2(){
-    write_koma()
+    //write_koma()
     if (win_count !=1){
         Jatch_win()
         Jatch_drwo()
@@ -322,7 +336,7 @@ function main_program_2(){
         console.log(c9);
         console.log(game_stage);
         
-        //write_koma()
+        write_koma()
     }
 }
 function write_line(){

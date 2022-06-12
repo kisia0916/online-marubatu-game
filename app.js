@@ -4,9 +4,13 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const session = require('express-session');
-
+const { notEqual } = require("assert");
+const url = require("url");
+const fs = require("fs");
+const { NONAME } = require("dns");
 let req_1,res_1;
 let counter = 0;
+let my_url_1 = "/";
 let now_player = [];
 let conn_user = {
     users:[],
@@ -111,7 +115,7 @@ app.get("/",(req,res)=>{
     //console.log("t:"+global_user_id);
     req_1 = req;
     res_1 = res;
-
+"start_user"
 });
 io.on("connection",(Socket)=>{
     //接続処理
@@ -232,6 +236,7 @@ io.on("connection",(Socket)=>{
                 console.log(conn_user.users);
             }
         })
+"send_user_id"
         Socket.on("user_name",(user_name)=>{
             test_name = "";
             test_name = user_name;
@@ -241,7 +246,7 @@ io.on("connection",(Socket)=>{
         });
         console.log(conn_user.users);
         //マッチング開始処理
-        Socket.on('start_match',()=>{
+        Socket.on('start_match',(glo_id)=>{
             console.log("start");
             io.emit("start_user",local_user_id);
             console.log(mat_user.user_list.indexOf(local_user_id));
@@ -370,7 +375,7 @@ io.on("connection",(Socket_4)=>{
         console.log("///////")
     })
     Socket_4.on("test_data_send",(room_id,turn_8)=>{
-        console.log("aaa"+room_id);
+        console.log(room_id);
         console.log(turn_8);
         io.emit("test_data_send_2",room_id,turn_8);
     })
@@ -410,6 +415,6 @@ io.on("connection",(Socket_4)=>{
         }
     })
 })
-server.listen(process.env.PORT||3000,()=>{
+server.listen(3000,()=>{
     console.log("run");
 })

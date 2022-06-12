@@ -37,8 +37,7 @@
         let my_room_id = null;
         form.addEventListener("submit",function(e){
             e.preventDefault();
-            socket.emit("start_match");
-
+            socket.emit("start_match",global_id);
         });
         socket.on("user_name",(name)=>{
             console.log("gro1"+global_id);

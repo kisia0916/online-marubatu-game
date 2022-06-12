@@ -212,6 +212,7 @@ function up_button(){
 
 }
 function alert_log_win(){
+    write_koma()
     if (!alert('you win')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -222,6 +223,7 @@ function alert_log_win(){
     }
 }
 function alert_log_lose(){
+    write_koma()
     if (!alert('you lose')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -232,6 +234,7 @@ function alert_log_lose(){
     }
 }
 function alert_log_hikiwake(){
+    write_koma()
     if (!alert('draw')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");

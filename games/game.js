@@ -319,7 +319,7 @@ function main_program_2(){
         console.log(c9);
         console.log(game_stage);
         
-        write_koma()
+        //write_koma()
     }
 }
 function write_line(){

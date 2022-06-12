@@ -44,13 +44,16 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
+            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 2;
+            stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
         }
         if (ban == 2 && count !=1){
             ban = 1;
+            stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
         }
     }
@@ -274,6 +277,7 @@ function write_turn(){
 }
 setInterval("main_program_2()",10);
 function main_program_2(){
+    write_koma()
     if (win_count !=1){
         Jatch_win()
         Jatch_drwo()

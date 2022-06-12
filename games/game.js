@@ -272,7 +272,7 @@ function write_turn(){
     }
 
 }
-setInterval("main_program_2()",1000);
+setInterval("main_program_2()",10);
 function main_program_2(){
     if (win_count !=1){
         Jatch_win()
@@ -313,7 +313,7 @@ function main_program_2(){
         console.log(c7);
         console.log(c8);
         console.log(c9);
-        //console.log(game_stage);
+        console.log(game_stage);
         
         write_koma()
     }

@@ -212,7 +212,7 @@ function up_button(){
 
 }
 function alert_log_win(){
-    write_koma()
+    //write_koma()
     if (!alert('you win')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -223,7 +223,7 @@ function alert_log_win(){
     }
 }
 function alert_log_lose(){
-    write_koma()
+    //write_koma()
     if (!alert('you lose')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -234,7 +234,7 @@ function alert_log_lose(){
     }
 }
 function alert_log_hikiwake(){
-    write_koma()
+    //write_koma()
     if (!alert('draw')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
@@ -297,7 +297,7 @@ function write_turn(){
 }
 setInterval("main_program_2()",10);
 function main_program_2(){
-    //write_koma()
+    write_koma()
     if (win_count !=1){
         Jatch_win()
         Jatch_drwo()
@@ -339,7 +339,7 @@ function main_program_2(){
         console.log(c9);
         console.log(game_stage);
         
-        write_koma()
+        //write_koma()
     }
 }
 function write_line(){

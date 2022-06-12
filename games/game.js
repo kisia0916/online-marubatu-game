@@ -53,7 +53,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
         }
         if (ban == 2 && count !=1){
             ban = 1;
-            stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
         }
     }

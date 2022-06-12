@@ -11,7 +11,6 @@ let can_width = '600';
 let can_heght = '400';
 let moouse_x,moouse_y;
 let turn = 1;
-let j_drow = 0;
 let mouse_click = 0;
 let mouse_list_x;
 let mouse_list_y;
@@ -44,16 +43,13 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 2;
-            stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
         }
         if (ban == 2 && count !=1){
             ban = 1;
-            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
         }
     }
@@ -69,56 +65,56 @@ function get_mouse(e){
 
 function get_mouse_button_fun(){
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
+        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         console.log(turn);
         console.log("kkey"+turn)
         mouse_click = 1;
         if (my_turn == 1){
-                game_stage[mouse_list_y][mouse_list_x] = 1;
+            game_stage[mouse_list_y][mouse_list_x] = 1;
+            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                //ban = 2;//
+                
 
         }else if (my_turn == 2){
-                game_stage[mouse_list_y][mouse_list_x] = 2;
+            game_stage[mouse_list_y][mouse_list_x] = 2;
+            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                //ban = 1;//
         }
-
+        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         write_koma()
         window.sessionStorage.setItem(['key3'],game_stage);
         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
-        //console.log("stage"+window.sessionStorage.getItem(['key3']))
-        //console.log(game_stage)
+        console.log("stage"+window.sessionStorage.getItem(['key3']))
+        console.log(game_stage)
         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+        
         //Jatch_win()
     }
 
 }
-function Jatch_drwo(){
-    if (game_stage[0][0] !=0&&game_stage[0][1] !=0&&game_stage[0][2] !=0&&game_stage[1][0] !=0&&game_stage[1][1] !=0&&game_stage[1][2] !=0&&game_stage[2][0] !=0&&game_stage[2][1] !=0&&game_stage[2][2] !=0){
-        win_count = 1;
-        alert_log_hikiwake();
-    }
- }
 function Jatch_win(){
+    let count_2 = 0;
+    let count_3 = 0;
     for (let i = 0;2>=i;i++){
         for (let s = 0;2>=s;s++){
+                
             if (s == 1){
                 if (game_stage[i][s] == 1 && game_stage[i][s+1] == 1 && game_stage[i][s-1] == 1){
                     if (my_turn == 1){
-                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i][s] == 2 && game_stage[i][s+1] == 2 && game_stage[i][s-1] == 2){
                     if (my_turn == 2){
-                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -127,24 +123,20 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i][s] == 1 && game_stage[i+1][s] == 1 && game_stage[i-1][s] == 1){
                     if (my_turn == 1){
-                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i][s] == 2 && game_stage[i+1][s] == 2 && game_stage[i-1][s] == 2){
                     if (my_turn == 2){
-                       // write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -153,24 +145,20 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i-1][s-1] == 1 && game_stage[i][s] == 1 && game_stage[i+1][s+1] == 1){
                     if (my_turn == 1){
-                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i-1][s-1] == 2 && game_stage[i][s] == 2 && game_stage[i+1][s+1] == 2){
                     if (my_turn == 2){
-                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -179,30 +167,24 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i+1][s-1] == 1 && game_stage[i][s] == 1 && game_stage[i-1][s+1] == 1){
                     if (my_turn == 1){
-                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i+1][s-1] == 2 && game_stage[i][s] == 2 && game_stage[i-1][s+1] == 2){
                     if (my_turn == 2){
-                        //write_koma()
                         alert_log_win()
-
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
-
             }
         }
     }
@@ -212,36 +194,33 @@ function up_button(){
 
 }
 function alert_log_win(){
-    //write_koma()
     if (!alert('you win')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
         window.sessionStorage.setItem(['key3'],"");
         window.sessionStorage.setItem(['key4'],"");
         window.sessionStorage.setItem(['key5'],"");
-        location.href = "/";
+        location.href = "/"
     }
 }
 function alert_log_lose(){
-    //write_koma()
     if (!alert('you lose')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
         window.sessionStorage.setItem(['key3'],"");
         window.sessionStorage.setItem(['key4'],"");
         window.sessionStorage.setItem(['key5'],"");
-        location.href = "/";
+        location.href = "/"
     }
 }
 function alert_log_hikiwake(){
-    //write_koma()
     if (!alert('draw')) {
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
         window.sessionStorage.setItem(['key3'],"");
         window.sessionStorage.setItem(['key4'],"");
         window.sessionStorage.setItem(['key5'],"");
-        location.href = "/";
+        location.href = "/"
     }
 }
 function write_koma(){
@@ -297,10 +276,8 @@ function write_turn(){
 }
 setInterval("main_program_2()",10);
 function main_program_2(){
-    write_koma()
     if (win_count !=1){
         Jatch_win()
-        Jatch_drwo()
     }
     write_turn();
     let test_list_2 = [[0],[0],[0]];
@@ -339,7 +316,7 @@ function main_program_2(){
         console.log(c9);
         console.log(game_stage);
         
-        //write_koma()
+        write_koma()
     }
 }
 function write_line(){

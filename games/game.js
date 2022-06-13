@@ -299,8 +299,9 @@ setInterval("main_program_2()",10);
 function main_program_2(){
     //write_koma()
     if (win_count !=1){
-        Jatch_win()
         Jatch_drwo()
+        Jatch_win()
+
     }
     write_turn();
     let test_list_2 = [[0],[0],[0]];

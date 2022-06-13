@@ -96,8 +96,16 @@ function Jatch_drwo(){
     }
  }
 function Jatch_win(){
+    let drwo_count = 0;
     for (let i = 0;2>=i;i++){
         for (let s = 0;2>=s;s++){
+            if (game_stage[i][s] != 0){
+                drwo_count +=1;
+                if (drwo_count >=9){
+                    alert_log_hikiwake()
+                    win_count=1;
+                }
+            }
             if (s == 1){
                 if (game_stage[i][s] == 1 && game_stage[i][s+1] == 1 && game_stage[i][s-1] == 1){
                     if (my_turn == 1){
@@ -299,7 +307,7 @@ setInterval("main_program_2()",10);
 function main_program_2(){
     //write_koma()
     if (win_count !=1){
-        Jatch_drwo()
+        //Jatch_drwo()
         Jatch_win()
 
     }

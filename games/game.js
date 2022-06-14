@@ -11,10 +11,12 @@ let can_width = '600';
 let can_heght = '400';
 let moouse_x,moouse_y;
 let turn = 1;
+let test_counter = 0;
 let j_drow = 0;
 let mouse_click = 0;
 let mouse_list_x;
 let mouse_list_y;
+
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -26,6 +28,7 @@ socket_1.on("server_turn",(turn_1,id)=>{
         //turn = turn_1;
     }
 })
+
 console.log(game_stage);
 //write_text();
 let ban = 1;
@@ -46,7 +49,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
         if (ban == 1){
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 2;
-            stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
@@ -99,6 +102,17 @@ function Jatch_win(){
     let drwo_count = 0;
     for (let i = 0;2>=i;i++){
         for (let s = 0;2>=s;s++){
+            /*
+            if (game_stage[i][s] !=0){
+                test_counter +=1;
+                if (test_counter >=9){
+                    console.log(test_counter);
+                    alert_log_hikiwake()
+                    console.log("hiki");
+                    win_count=1;
+                }
+            }
+            */
             if (game_stage[i][s] != 0){
                 drwo_count +=1;
                 if (drwo_count >=9){
@@ -257,7 +271,7 @@ function write_koma(){
     //ctx.strokeStyle = "purple" ;
     for (let s = 0;2 >= s;s++){
         for (let i =0;2 >=i;i++){
-            console.log(game_stage[s][i]);
+            //console.log(game_stage[s][i]);
             if (game_stage[s][i] == 1){
                 ctx.beginPath();
                 ctx.strokeStyle = "#FFFFFF" ;
@@ -288,7 +302,7 @@ function main_program(){
 }
 let text = "";
 function write_turn(){
-    console.log(my_turn);
+    //console.log(my_turn);
     if (ban == my_turn && my_turn == 1){
         ctx.fillStyle = "#0ff";
         ctx.font = "50px cursive";
@@ -315,7 +329,7 @@ function main_program_2(){
     let test_list_2 = [[0],[0],[0]];
     turn = window.sessionStorage.getItem(['key5']);
     if (window.sessionStorage.getItem(['key3'])){
-        console.log("aaaa");
+        //console.log("aaaa");
         let test_list;
         test_list = window.sessionStorage.getItem(['key3']);//セッションに入ったやつは配列じゃなくなるから変換が必要
         let c1 =  test_list.substring(0,1);
@@ -337,6 +351,7 @@ function main_program_2(){
         game_stage[2][0] = Number(c7);
         game_stage[2][1] = Number(c8);
         game_stage[2][2] = Number(c9);
+        /*
         console.log(c1);
         console.log(c2);
         console.log(c3);
@@ -346,7 +361,8 @@ function main_program_2(){
         console.log(c7);
         console.log(c8);
         console.log(c9);
-        console.log(game_stage);
+        */
+        //console.log(game_stage);
         
         write_koma()
     }

@@ -113,6 +113,10 @@ app.get("/",(req,res)=>{
     console.log("1"+req.session.user);
     console.log("2"+req.session.user)
     //console.log("t:"+global_user_id);
+    //
+    //req.session.user = "";
+    //req.session.connection_data = "";
+    //
     req_1 = req;
     res_1 = res;
 });
@@ -126,6 +130,7 @@ io.on("connection",(Socket)=>{
     let global_user_id;
     console.log("ddddddddddddddddd"+req_1.session.connection_data);
     if (req_1.session.connection_data == undefined){
+        io.emit("con_my_user","hello_marubatu");
         req_1.session.connection_data = true;
         if (req_1.session.user){
             req_1.session.user = "";
@@ -411,6 +416,8 @@ io.on("connection",(Socket_4)=>{
                     room_list.splice(i,1);
                     console.log(room_list);
                     req_1.session.user = "";
+                    req_1.session.connection_data = undefined;
+                    local_user_id = "";
                 }
                 if (room_list[i] != undefined){
                     if (room_list[i].get_player_2() == local_user_id){
@@ -418,14 +425,9 @@ io.on("connection",(Socket_4)=>{
                         io.emit("aite_nasi",room_list[i].get_room_id());
                         room_list.splice(i,1);
                         console.log(room_list);
-                        game_stage = [
-                            [0,0,0],
-                            [0,0,0],
-                            [0,0,0]
-                        ]
-                        stage = 0,0,0,0,0,0,0,0,0;
                         req_1.session.user = "";
-                        req_1.session.connection_data == undefined;
+                        req_1.session.connection_data = undefined;
+                        local_user_id = "";
                     }
                 }
             }

@@ -15,6 +15,7 @@
         <canvas id = "canvas" width="200" height="200" class = canvas></canvas>
     </div>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/games/game_back.js"></script>
     <script src="/games/game.js"></script>
     <script src="/games/game_text.js"></script>
     <script>
@@ -61,10 +62,31 @@
                 window.sessionStorage.setItem(['key3'],stage);
             }
         })
+        socket.on("aite_nasi",(room)=>{
+            console.log("相手が切断しました");
+            if (my_room_id == room){
+                if (!alert('相手が切断しました')){
+                    window.sessionStorage.setItem(['k1'],"");
+                    window.sessionStorage.setItem(['k2'],"");
+                    window.sessionStorage.setItem(['key3'],"");
+                    window.sessionStorage.setItem(['key4'],"");
+                    window.sessionStorage.setItem(['key5'],"");
+                    location.href = "/";
+                }
+            }
+        })
+        /*
         history.pushState(null, null, location.href);
         window.addEventListener('popstate', (e) => {
           history.go(1);
         });
+        */
+        history.pushState(null,null,'/game');
+        window.addEventListener('popstate',function (){
+            //# ２回目以降のpushState
+            history.pushState(null,null,'/game');
+            //history.go(1);
+  });
         let key = false;
 
 document.addEventListener('keydown', function(e){

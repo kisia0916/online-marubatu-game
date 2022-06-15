@@ -61,6 +61,15 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
         }
     }
 })
+socket_1.on("distract_sesstion",(user)=>{
+    if (window.sessionStorage.getItem(['k1']) == user){
+        window.sessionStorage.setItem(['k1'],"");
+        window.sessionStorage.setItem(['k2'],"");
+        window.sessionStorage.setItem(['key3'],"");
+        window.sessionStorage.setItem(['key4'],"");
+        window.sessionStorage.setItem(['key5'],"");
+    }
+})
 /////////////////////////////////////////////////////
 function get_mouse(e){
     let mouse_posi = e.target.getBoundingClientRect();

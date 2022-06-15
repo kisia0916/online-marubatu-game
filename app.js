@@ -325,15 +325,17 @@ io.on("connection",(Socket_4)=>{
     let local_user_id;
     io.emit("con_send","test");
     Socket_4.on("stage_update",(stage,room)=>{
-        ///ここに書く
-        console.log("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-        game_stage = stage;
-        console.log(stage);
-        console.log(room);
-        io.emit("send_stage",game_stage,room);
+        ///ここに書
+
         for (let i= 0;room_list.length > i;i++){
             if (room_list[i].get_room_id() == room){
-                room_list[i].update_stage(game_stage);
+                io.emit("send_stage",stage,room);
+                console.log("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+                //game_stage = stage;
+                console.log(stage);
+                console.log(room);
+                console.log(room_list);
+                room_list[i].update_stage(stage);
                 //console.log(room_list.get_stage());
                 io.emit("stage_update",room_list[i].get_stage(),room);
             }
@@ -378,6 +380,7 @@ io.on("connection",(Socket_4)=>{
         io.emit("test_data_send_2",room_id,turn_8);
     })
     Socket_4.on("disconnect",()=>{
+        Socket_4.emit("distract_sesstion",local_user_id);
         console.log(local_user_id);//ここに/gameの切断処理を描く
         //connuserから削除
         for (let i= 0;conn_user.users.length > i;i++){
@@ -402,11 +405,18 @@ io.on("connection",(Socket_4)=>{
         for (let i = 0;room_list.length > i;i++){
             if (room_list[i] != undefined){
                 if (room_list[i].get_player_1() == local_user_id){
+                    io.emit("aite_nasi",room_list[i].get_room_id());;
                     room_list.splice(i,1);
+                    console.log(room_list);
+                    req_1.session.user = "";
                 }
                 if (room_list[i] != undefined){
                     if (room_list[i].get_player_2() == local_user_id){
+                        io.emit("aite_nasi",room_list[i].get_room_id());
                         room_list.splice(i,1);
+                        console.log(room_list);
+                        req_1.session.user = "";
+                        req_1.session.connection_data == undefined;
                     }
                 }
             }

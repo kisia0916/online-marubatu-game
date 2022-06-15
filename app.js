@@ -324,6 +324,7 @@ app.get("/game",(req,res)=>{
 io.on("connection",(Socket_4)=>{
     let local_user_id;
     io.emit("con_send","test");
+    io.emit("con_test","hello");
     Socket_4.on("stage_update",(stage,room)=>{
         ///ここに書
 
@@ -405,6 +406,7 @@ io.on("connection",(Socket_4)=>{
         for (let i = 0;room_list.length > i;i++){
             if (room_list[i] != undefined){
                 if (room_list[i].get_player_1() == local_user_id){
+                    io.emit("aite_nasi_1",room_list[i].get_room_id());
                     io.emit("aite_nasi",room_list[i].get_room_id());;
                     room_list.splice(i,1);
                     console.log(room_list);
@@ -412,9 +414,16 @@ io.on("connection",(Socket_4)=>{
                 }
                 if (room_list[i] != undefined){
                     if (room_list[i].get_player_2() == local_user_id){
+                        io.emit("aite_nasi_1",room_list[i].get_room_id());
                         io.emit("aite_nasi",room_list[i].get_room_id());
                         room_list.splice(i,1);
                         console.log(room_list);
+                        game_stage = [
+                            [0,0,0],
+                            [0,0,0],
+                            [0,0,0]
+                        ]
+                        stage = 0,0,0,0,0,0,0,0,0;
                         req_1.session.user = "";
                         req_1.session.connection_data == undefined;
                     }

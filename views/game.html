@@ -9,11 +9,12 @@
 </head>
 <body>
     <div id = "canvas_weapper" style="text-align: center">
-        <canvas id = "canvas" width="600" height="800" class="canvas"></canvas>
+        <canvas id = "canvas" width="600" height="700" class="canvas"></canvas>
     </div>
     <div id = "canvas_2" class = "canvas_2">
         <canvas id = "canvas" width="200" height="200" class = canvas></canvas>
     </div>
+    <h1 class = "test">test</h1>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/games/game_back.js"></script>
     <script src="/games/game.js"></script>
@@ -29,6 +30,9 @@
         socket.on("test_send",(mess)=>{
             console.log(mess);
             console.log("unkoman");
+        })
+        socket.on("con_test",(mess)=>{
+            window.sessionStorage.setItem(['key3'],"");
         })
         socket.on("con_send",(mess)=>{
             console.log("bbba"+mess);
@@ -59,6 +63,7 @@
         socket.on("stage_update",(stage,room)=>{
             console.log(stage);
             if (room == my_room_id){
+                window.sessionStorage.setItem(['key3'],"");
                 window.sessionStorage.setItem(['key3'],stage);
             }
         })

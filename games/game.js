@@ -28,6 +28,7 @@ socket_1.on("server_turn",(turn_1,id)=>{
         //turn = turn_1;
     }
 })
+/*
 socket_1.on("aite_nasi_1",(room)=>{
     if (room == window.sessionStorage.getItem(['k2'])){
         console.log("相手がいません");
@@ -40,6 +41,7 @@ socket_1.on("aite_nasi_1",(room)=>{
         test_list = null;
     }
 })
+*/
 console.log(game_stage);
 //write_text();
 let ban = 1;

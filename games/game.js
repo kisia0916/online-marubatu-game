@@ -70,6 +70,12 @@ socket_1.on("distract_sesstion",(user)=>{
         window.sessionStorage.setItem(['key5'],"");
     }
 })
+history.replaceState(null, document.getElementsByTagName('title')[0].innerHTML, null);
+window.addEventListener('popstate', function(e) {
+  socket_1.on("disconnect",()=>{
+    
+  })
+});
 /////////////////////////////////////////////////////
 function get_mouse(e){
     let mouse_posi = e.target.getBoundingClientRect();

@@ -54,6 +54,12 @@
             if (id == global_id){
                 console.log("test");
                 mess_p.textContent = "マッチングしています...";
+                history.pushState(null,null,'/');
+                window.addEventListener('popstate',function (){
+                    //# ２回目以降のpushState
+                    history.pushState(null,null,'/');
+                    //history.go(1);
+          });
                 mess.appendChild(mess_p);
             }
         });

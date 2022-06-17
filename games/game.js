@@ -138,6 +138,7 @@ function Jatch_win(){
             if (game_stage[i][s] != 0){
                 drwo_count +=1;
                 if (drwo_count >=9){
+                    //write_koma()
                     alert_log_hikiwake()
                     win_count=1;
                 }
@@ -146,10 +147,12 @@ function Jatch_win(){
                 if (game_stage[i][s] == 1 && game_stage[i][s+1] == 1 && game_stage[i][s-1] == 1){
                     if (my_turn == 1){
                         //write_koma()
+                        //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
+                        //write_koma()
                         //write_koma()
                         alert_log_lose()
                         win_count =1;
@@ -183,7 +186,7 @@ function Jatch_win(){
                 }
                 if (game_stage[i][s] == 2 && game_stage[i+1][s] == 2 && game_stage[i-1][s] == 2){
                     if (my_turn == 2){
-                       // write_koma()
+                         //write_koma()
                         alert_log_win()
                         win_count =1;
                     }
@@ -257,7 +260,9 @@ function up_button(){
 }
 function alert_log_win(){
     //write_koma()
+    write_koma()
     if (!alert('you win')) {
+        write_koma()
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
         window.sessionStorage.setItem(['key3'],"");
@@ -267,8 +272,10 @@ function alert_log_win(){
     }
 }
 function alert_log_lose(){
-    //write_koma()
+    write_koma()
+
     if (!alert('you lose')) {
+        write_koma()
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
         window.sessionStorage.setItem(['key3'],"");
@@ -279,7 +286,9 @@ function alert_log_lose(){
 }
 function alert_log_hikiwake(){
     //write_koma()
+    write_koma()
     if (!alert('draw')) {
+        write_koma()
         window.sessionStorage.setItem(['k1'],"");
         window.sessionStorage.setItem(['k2'],"");
         window.sessionStorage.setItem(['key3'],"");

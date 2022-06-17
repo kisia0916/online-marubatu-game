@@ -60,6 +60,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
+            main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 2;
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -68,6 +69,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
             count = 1;
         }
         if (ban == 2 && count !=1){
+            main_program_2()
             ban = 1;
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);

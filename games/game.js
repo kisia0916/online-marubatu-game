@@ -138,7 +138,7 @@ function Jatch_win(){
             if (game_stage[i][s] != 0){
                 drwo_count +=1;
                 if (drwo_count >=9){
-                    //write_koma()
+                    write_koma()
                     alert_log_hikiwake()
                     win_count=1;
                 }
@@ -147,12 +147,12 @@ function Jatch_win(){
                 if (game_stage[i][s] == 1 && game_stage[i][s+1] == 1 && game_stage[i][s-1] == 1){
                     if (my_turn == 1){
                         //write_koma()
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
+                        write_koma()
                         //write_koma()
                         alert_log_lose()
                         win_count =1;
@@ -160,12 +160,12 @@ function Jatch_win(){
                 }
                 if (game_stage[i][s] == 2 && game_stage[i][s+1] == 2 && game_stage[i][s-1] == 2){
                     if (my_turn == 2){
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -174,24 +174,24 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i][s] == 1 && game_stage[i+1][s] == 1 && game_stage[i-1][s] == 1){
                     if (my_turn == 1){
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i][s] == 2 && game_stage[i+1][s] == 2 && game_stage[i-1][s] == 2){
                     if (my_turn == 2){
-                         //write_koma()
+                         write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -200,24 +200,24 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i-1][s-1] == 1 && game_stage[i][s] == 1 && game_stage[i+1][s+1] == 1){
                     if (my_turn == 1){
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i-1][s-1] == 2 && game_stage[i][s] == 2 && game_stage[i+1][s+1] == 2){
                     if (my_turn == 2){
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
@@ -226,25 +226,25 @@ function Jatch_win(){
             if (i == 1){
                 if (game_stage[i+1][s-1] == 1 && game_stage[i][s] == 1 && game_stage[i-1][s+1] == 1){
                     if (my_turn == 1){
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
                         win_count =1;
                     }
                     if(my_turn ==2){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }
                 }
                 if (game_stage[i+1][s-1] == 2 && game_stage[i][s] == 2 && game_stage[i-1][s+1] == 2){
                     if (my_turn == 2){
-                        //write_koma()
+                        write_koma()
                         alert_log_win()
 
                         win_count =1;
                     }
                     if(my_turn ==1){
-                        //write_koma()
+                        write_koma()
                         alert_log_lose()
                         win_count =1;
                     }

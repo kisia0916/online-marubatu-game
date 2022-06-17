@@ -106,23 +106,14 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                 main_program_2()//////////////////////////////
                 //sleep(1000);
-                frag = true;
-                if (frag == true){
-                    game_stage[mouse_list_y][mouse_list_x] = 1;
-                }
-                    //game_stage[mouse_list_y][mouse_list_x] = 1;
-                    frag = false;
+                game_stage[mouse_list_y][mouse_list_x] = 1;
 
 
         }else if (my_turn == 2){
             main_program_2()///////////////////////////////////////
-                //sleep(1000);
-                frag = true;
-                if (frag == true){
-                    game_stage[mouse_list_y][mouse_list_x] = 2;
-                }
+            //sleep(1000);
+            game_stage[mouse_list_y][mouse_list_x] = 2;
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
-                    frag = false;
                 
         }
 

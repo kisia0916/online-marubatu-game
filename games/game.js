@@ -101,11 +101,14 @@ function get_mouse_button_fun(){
         mouse_click = 1;
         if (my_turn == 1){
                 main_program_2()//////////////////////////////
+                //sleep(1000);
                 game_stage[mouse_list_y][mouse_list_x] = 1;
 
         }else if (my_turn == 2){
             main_program_2()///////////////////////////////////////
+                //sleep(1000);
                 game_stage[mouse_list_y][mouse_list_x] = 2;
+                
         }
 
         write_koma()
@@ -117,6 +120,12 @@ function get_mouse_button_fun(){
         //Jatch_win()
     }
 
+}
+function maru_list(){
+    game_stage[mouse_list_y][mouse_list_x] = 1;
+}
+function batu_list(){
+    game_stage[mouse_list_y][mouse_list_x] = 2;
 }
 function Jatch_drwo(){
     if (game_stage[0][0] !=0&&game_stage[0][1] !=0&&game_stage[0][2] !=0&&game_stage[1][0] !=0&&game_stage[1][1] !=0&&game_stage[1][2] !=0&&game_stage[2][0] !=0&&game_stage[2][1] !=0&&game_stage[2][2] !=0){

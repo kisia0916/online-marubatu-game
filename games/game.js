@@ -124,6 +124,7 @@ function get_mouse_button_fun(){
         //console.log(game_stage)
         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         //Jatch_win()
+        setTimeout(3000);
     }
 
 }

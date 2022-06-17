@@ -98,9 +98,11 @@ function get_mouse_button_fun(){
         console.log("kkey"+turn)
         mouse_click = 1;
         if (my_turn == 1){
+                main_program_2()//////////////////////////////
                 game_stage[mouse_list_y][mouse_list_x] = 1;
 
         }else if (my_turn == 2){
+            main_program_2()///////////////////////////////////////
                 game_stage[mouse_list_y][mouse_list_x] = 2;
         }
 

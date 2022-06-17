@@ -60,17 +60,21 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-            main_program_2()
+            //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 2;
+            //main_program_2()
+            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
         }
         if (ban == 2 && count !=1){
-            main_program_2()
+            //main_program_2()
+            //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 1;
+            //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
         }
@@ -93,7 +97,7 @@ function get_mouse(e){
     mouse_list_x = Math.abs(Math.floor((moouse_x) / 200));
     mouse_list_y = Math.abs(Math.floor((moouse_y) / 250));
 }
-
+let frag = false;
 function get_mouse_button_fun(){
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
         console.log(turn);
@@ -102,12 +106,23 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                 main_program_2()//////////////////////////////
                 //sleep(1000);
-                game_stage[mouse_list_y][mouse_list_x] = 1;
+                frag = true;
+                if (frag == true){
+                    game_stage[mouse_list_y][mouse_list_x] = 1;
+                }
+                    //game_stage[mouse_list_y][mouse_list_x] = 1;
+                    frag = false;
+
 
         }else if (my_turn == 2){
             main_program_2()///////////////////////////////////////
                 //sleep(1000);
-                game_stage[mouse_list_y][mouse_list_x] = 2;
+                frag = true;
+                if (frag == true){
+                    game_stage[mouse_list_y][mouse_list_x] = 2;
+                }
+                    //game_stage[mouse_list_y][mouse_list_x] = 1;
+                    frag = false;
                 
         }
 

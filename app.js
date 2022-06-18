@@ -347,6 +347,9 @@ io.on("connection",(Socket_4)=>{
             }
         }
     });
+    Socket_4.on("turn_change_1",(room)=>{
+        io.emit("test_data_send_2",room);
+    })
     /*
     Socket_4.on("change_turn",(turn,room_id)=>{
         console.log("ooooooooooooooooooo")
@@ -379,11 +382,13 @@ io.on("connection",(Socket_4)=>{
         console.log("mat_user:"+mat_user.user_list);
         console.log("///////")
     })
+    /*
     Socket_4.on("test_data_send",(room_id,turn_8)=>{
         console.log(room_id);
         console.log(turn_8);
         io.emit("test_data_send_2",room_id,turn_8);
     })
+    */
     Socket_4.on("disconnect",()=>{
         Socket_4.emit("distract_sesstion",local_user_id);
         console.log(local_user_id);//ここに/gameの切断処理を描く

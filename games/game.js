@@ -107,6 +107,7 @@ function get_mouse_button_fun(){
                ///////////////////////////
                 //sleep(1000);
                 game_stage[mouse_list_y][mouse_list_x] = 1;
+                socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                 //main_program_2()///
 
 
@@ -114,7 +115,7 @@ function get_mouse_button_fun(){
             ///////////////////////////////////////
             //sleep(1000);
             game_stage[mouse_list_y][mouse_list_x] = 2;
-
+            socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
             
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
                 

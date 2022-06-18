@@ -104,19 +104,21 @@ function get_mouse_button_fun(){
         console.log("kkey"+turn)
         mouse_click = 1;
         if (my_turn == 1){
-                main_program_2()//////////////////////////////
+               ///////////////////////////
                 //sleep(1000);
                 game_stage[mouse_list_y][mouse_list_x] = 1;
+                //main_program_2()///
 
 
         }else if (my_turn == 2){
-            main_program_2()///////////////////////////////////////
+            ///////////////////////////////////////
             //sleep(1000);
             game_stage[mouse_list_y][mouse_list_x] = 2;
+
+            
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
                 
         }
-
         write_koma()
         window.sessionStorage.setItem(['key3'],game_stage);
         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -124,7 +126,7 @@ function get_mouse_button_fun(){
         //console.log(game_stage)
         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         //Jatch_win()
-        setTimeout(3000);
+        //setTimeout(3000);
     }
 
 }
@@ -317,6 +319,7 @@ function alert_log_hikiwake(){
         location.href = "/";
     }
 }
+"test_data_send"
 function write_koma(){
     ctx.beginPath() ;
     //ctx.strokeStyle = "purple" ;
@@ -342,6 +345,35 @@ function write_koma(){
             }
         }
     }
+}
+function write_koma_2(sub){
+    ctx.beginPath() ;
+    //ctx.strokeStyle = "purple" ;
+    for (let s = 0;2 >= s;s++){
+        for (let i =0;2 >=i;i++){
+            //console.log(game_stage[s][i]);
+            if (game_stage[s][i] == 1){
+                ctx.beginPath();
+                ctx.strokeStyle = "#FFFFFF" ;
+                //ctx.arc(mouse_list_x*200-100,mouse_list_y*200-100,80,Math.PI*2,true);
+                //ctx.arc(100,100,50,2*Math.PI,false);
+                ctx.arc(i*200+100,s*200+100+54,73,2*Math.PI,false);
+                ctx.stroke() ;
+                
+            }
+            if (game_stage[s][i] == 2){
+                ctx.beginPath();
+                ctx.strokeStyle = "#FFFFF";
+                ctx.moveTo(i*200+25,s*200+85); 
+                ctx.lineTo(i*200+175,s*200+220);
+                ctx.moveTo(i*200+175,s*200+85); 
+                ctx.lineTo(i*200+25,s*200+220);
+                ctx.stroke() ;
+                
+            }
+        }
+    }
+    sub();
 }
 function main_program(){
     canvas.addEventListener("mousemove",(e)=>{
@@ -373,7 +405,10 @@ function main_program_2(){
     //write_koma()
     if (win_count !=1){
         //Jatch_drwo()
-        Jatch_win()
+        write_koma_2(function(){
+            Jatch_win()
+        })
+
 
     }
     write_turn();

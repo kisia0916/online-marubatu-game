@@ -97,44 +97,8 @@ function get_mouse(e){
     mouse_list_x = Math.abs(Math.floor((moouse_x) / 200));
     mouse_list_y = Math.abs(Math.floor((moouse_y) / 250));
 }
-    let frag = false;
-    function get_mouse_button_fun(){
-        var flg = true;
-
-    function check_renda(){
-    if(flg == true){
-        flg = false;
-        return true;
-    }
-    return false;
-    }
-    if(check_renda() == false){
-            return;
-    }
-        //
-        if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
-            console.log(turn);
-            console.log("kkey"+turn)
-            mouse_click = 1;
-            if (my_turn == 1){
-                   ///////////////////////////
-                    //sleep(1000);
-                    game_stage[mouse_list_y][mouse_list_x] = 1;
-                    //main_program_2()///
-    
-    
-            }else if (my_turn == 2){
-                ///////////////////////////////////////
-                //sleep(1000);
-                game_stage[mouse_list_y][mouse_list_x] = 2;
-    
-                
-                        //game_stage[mouse_list_y][mouse_list_x] = 1;
-                    
-            }
-        check_flg = true
-    }
-    /*
+let frag = false;
+function get_mouse_button_fun(){
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
         console.log(turn);
         console.log("kkey"+turn)
@@ -155,7 +119,6 @@ function get_mouse(e){
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
                 
         }
-        */
         write_koma()
         window.sessionStorage.setItem(['key3'],game_stage);
         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -166,6 +129,7 @@ function get_mouse(e){
         //setTimeout(3000);
     }
 
+}
 function maru_list(){
     game_stage[mouse_list_y][mouse_list_x] = 1;
 }

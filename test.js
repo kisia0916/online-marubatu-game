@@ -9,3 +9,11 @@ function sub_2(){
 main(function(){
     sub_2()
 })
+const d1 = new Date();
+while (true) {
+  const d2 = new Date();
+  if (d2 - d1 > 2000) {
+    break;
+  }
+}
+console.log("sleep");

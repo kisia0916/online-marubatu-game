@@ -60,9 +60,22 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
+
+            //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 2;
+            write_turn();
+            write_koma()
+            write_turn()
+            //駒のデータ送信もここで行う
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 100) {
+                break;
+                }
+            }
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -71,9 +84,21 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
             count = 1;
         }
         if (ban == 2 && count !=1){
+
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             ban = 1;
+            write_turn();
+            write_koma();
+            console.log("aa");
+            write_turn();
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 100) {
+                break;
+                }
+            }
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);

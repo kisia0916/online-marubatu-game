@@ -69,13 +69,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
             write_koma()
             write_turn()
             //駒のデータ送信もここで行う
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 100) {
-                break;
-                }
-            }
+
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -92,13 +86,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
             write_koma();
             console.log("aa");
             write_turn();
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 100) {
-                break;
-                }
-            }
+
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
@@ -132,7 +120,17 @@ function get_mouse_button_fun(){
                ///////////////////////////
                 //sleep(1000);
                 game_stage[mouse_list_y][mouse_list_x] = 1;
+
                 socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                write_koma();
+                write_turn();
+                const d1 = new Date();
+                while (true) {
+                const d2 = new Date();
+                if (d2 - d1 > 200) {
+                    break;
+                    }
+                }
                 //main_program_2()///
 
 
@@ -141,6 +139,15 @@ function get_mouse_button_fun(){
             //sleep(1000);
             game_stage[mouse_list_y][mouse_list_x] = 2;
             socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+            write_koma();
+            write_turn();
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 200) {
+                break;
+                }
+            }
             
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
                 
@@ -157,9 +164,11 @@ function get_mouse_button_fun(){
 
 }
 function maru_list(){
+
     game_stage[mouse_list_y][mouse_list_x] = 1;
 }
 function batu_list(){
+
     game_stage[mouse_list_y][mouse_list_x] = 2;
 }
 function Jatch_drwo(){

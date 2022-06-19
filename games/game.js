@@ -461,7 +461,7 @@ setInterval("main_program_2()",100);
 function main_program_2(){
     //write_koma()
     if (win_count !=1){
-        //Jatch_drwo()
+        //Jatch_drwo();
         write_koma_2(function(){
             Jatch_win()
         })

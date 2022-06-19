@@ -81,6 +81,19 @@
                 }
             }
         })
+        document.addEventListener('keydown', (event)=>{
+            console.log(event.key);
+            if (event.keyCode == 32){
+                if (!alert('ホームに戻ります')){
+                    window.sessionStorage.setItem(['k1'],"");
+                    window.sessionStorage.setItem(['k2'],"");
+                    window.sessionStorage.setItem(['key3'],"");
+                    window.sessionStorage.setItem(['key4'],"");
+                    window.sessionStorage.setItem(['key5'],"");
+                    location.href = "/";
+                }
+            }
+        });
         /*
         history.pushState(null, null, location.href);
         window.addEventListener('popstate', (e) => {

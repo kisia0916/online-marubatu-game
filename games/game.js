@@ -16,7 +16,7 @@ let j_drow = 0;
 let mouse_click = 0;
 let mouse_list_x;
 let mouse_list_y;
-
+let turn_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -68,6 +68,7 @@ socket_1.on("end_koma_server",(mess)=>{
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 300) {
+                turn_counter = 0;
                 ban = 2;
                 write_koma();
                 write_turn();
@@ -93,6 +94,7 @@ socket_1.on("end_koma_server",(mess)=>{
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 300) {
+                turn_counter = 0;
                 ban = 1;
                 write_koma();
                 write_turn();
@@ -137,13 +139,14 @@ function get_mouse_button_fun(){
                 const d1 = new Date();
                 while (true) {
                 const d2 = new Date();
-                if (d2 - d1 > 100) {
+                if (d2 - d1 > 100 && turn_counter == 0) {
                     game_stage[mouse_list_y][mouse_list_x] = 1;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
+                    turn_counter = 1;
                     break;
                     }
                 }
@@ -158,13 +161,14 @@ function get_mouse_button_fun(){
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 100) {
+            if (d2 - d1 > 100 && turn_counter ==0) {
                 game_stage[mouse_list_y][mouse_list_x] = 2;
                 socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                 socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                 socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                 write_koma();
                 write_turn();
+                turn_counter = 1
                 break;
                 }
             }

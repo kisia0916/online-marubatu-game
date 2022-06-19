@@ -54,7 +54,7 @@ write_line()
 ctx.fill();
 write_line()
 main_program()
-socket_1.on("test_data_send_2",(mess,nnn)=>{
+socket_1.on("end_koma_server",(mess)=>{
     let count = 0;
     console.log(mess);
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
@@ -92,7 +92,7 @@ socket_1.on("test_data_send_2",(mess,nnn)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 200) {
+            if (d2 - d1 > 300) {
                 ban = 1;
                 write_koma();
                 write_turn();
@@ -126,6 +126,7 @@ function get_mouse(e){
 }
 let frag = false;
 function get_mouse_button_fun(){
+    main_program_2();
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
         console.log(turn);
         console.log("kkey"+turn)
@@ -136,7 +137,7 @@ function get_mouse_button_fun(){
                 const d1 = new Date();
                 while (true) {
                 const d2 = new Date();
-                if (d2 - d1 > 200) {
+                if (d2 - d1 > 100) {
                     game_stage[mouse_list_y][mouse_list_x] = 1;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
@@ -157,7 +158,7 @@ function get_mouse_button_fun(){
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 200) {
+            if (d2 - d1 > 100) {
                 game_stage[mouse_list_y][mouse_list_x] = 2;
                 socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                 socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
@@ -456,7 +457,7 @@ function write_turn(){
     }
 
 }
-setInterval("main_program_2()",10);
+setInterval("main_program_2()",100);
 function main_program_2(){
     //write_koma()
     if (win_count !=1){
@@ -473,6 +474,7 @@ function main_program_2(){
     if (window.sessionStorage.getItem(['key3'])){
         //console.log("aaaa");
         let test_list;
+        window.sessionStorage.setItem(['k100'],game_stage);
         test_list = window.sessionStorage.getItem(['key3']);//セッションに入ったやつは配列じゃなくなるから変換が必要
         let c1 =  test_list.substring(0,1);
         let c2 = test_list.substring(2,3);
@@ -505,8 +507,14 @@ function main_program_2(){
         console.log(c9);
         */
         //console.log(game_stage);
-        
+        window.sessionStorage.setItem(['k90'],game_stage);
         write_koma()
+        if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
+            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+            window.sessionStorage.setItem(['k90'],"");
+            window.sessionStorage.setItem(['k100'],"");
+        }
+            
     }
 }
 function write_line(){

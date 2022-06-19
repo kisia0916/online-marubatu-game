@@ -330,6 +330,9 @@ io.on("connection",(Socket_4)=>{
     let local_user_id;
     io.emit("con_send","test");
     io.emit("con_test","hello");
+    Socket_4.on("end_koma",(room_id_90)=>{
+        io.emit("end_koma_server",room_id_90);
+    })
     Socket_4.on("stage_update",(stage,room)=>{
         ///ここに書
 

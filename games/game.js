@@ -119,35 +119,39 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                ///////////////////////////
                 //sleep(1000);
-                game_stage[mouse_list_y][mouse_list_x] = 1;
-
-                socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
-                write_koma();
-                write_turn();
                 const d1 = new Date();
                 while (true) {
                 const d2 = new Date();
                 if (d2 - d1 > 200) {
+                    game_stage[mouse_list_y][mouse_list_x] = 1;
+
+                    socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                    write_koma();
+                    write_turn();
                     break;
                     }
                 }
+
+
                 //main_program_2()///
 
 
         }else if (my_turn == 2){
             ///////////////////////////////////////
             //sleep(1000);
-            game_stage[mouse_list_y][mouse_list_x] = 2;
-            socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
-            write_koma();
-            write_turn();
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 200) {
+                game_stage[mouse_list_y][mouse_list_x] = 2;
+                socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                write_koma();
+                write_turn();
                 break;
                 }
             }
+
+
             
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
                 

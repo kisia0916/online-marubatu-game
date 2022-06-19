@@ -60,7 +60,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-
+            turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -68,7 +68,6 @@ socket_1.on("end_koma_server",(mess)=>{
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 300) {
-                turn_counter = 0;
                 ban = 2;
                 write_koma();
                 write_turn();
@@ -87,14 +86,14 @@ socket_1.on("end_koma_server",(mess)=>{
             count = 1;
         }
         if (ban == 2 && count !=1){
-
+            turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 300) {
-                turn_counter = 0;
+                
                 ban = 1;
                 write_koma();
                 write_turn();
@@ -146,11 +145,10 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-                    turn_counter = 1;
                     break;
                     }
                 }
-
+                turn_counter = 1;
 
                 //main_program_2()///
 
@@ -168,12 +166,12 @@ function get_mouse_button_fun(){
                 socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                 write_koma();
                 write_turn();
-                turn_counter = 1
+                
                 break;
                 }
             }
 
-
+            turn_counter = 1
             
                     //game_stage[mouse_list_y][mouse_list_x] = 1;
                 

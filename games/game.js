@@ -67,7 +67,7 @@ socket_1.on("end_koma_server",(mess)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 300) {
+            if (d2 - d1 > 600) {
                 ban = 2;
                 write_koma();
                 write_turn();
@@ -92,8 +92,7 @@ socket_1.on("end_koma_server",(mess)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 300) {
-                
+            if (d2 - d1 > 600) {
                 ban = 1;
                 write_koma();
                 write_turn();

@@ -67,7 +67,7 @@ socket_1.on("end_koma_server",(mess)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 600) {
+            if (d2 - d1 > 500) {
                 ban = 2;
                 write_koma();
                 write_turn();
@@ -92,7 +92,7 @@ socket_1.on("end_koma_server",(mess)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 600) {
+            if (d2 - d1 > 500) {
                 ban = 1;
                 write_koma();
                 write_turn();
@@ -146,6 +146,14 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         turn_counter = 1;
+                        const d1 = new Date();
+                        while (true) {
+                        const d2 = new Date();
+                        if (d2 - d1 > 100) {
+                            break;
+                            }
+                        }
+                        
                     }
                     break;
                     }
@@ -170,6 +178,13 @@ function get_mouse_button_fun(){
                     write_koma();
                     write_turn();
                     turn_counter = 1;
+                    const d1 = new Date();
+                    while (true) {
+                    const d2 = new Date();
+                    if (d2 - d1 > 100) {
+                        break;
+                        }
+                    }
                     
                 }
                 break;

@@ -60,7 +60,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-            turn_counter = 0;
+            //turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -71,6 +71,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 ban = 2;
                 write_koma();
                 write_turn();
+                turn_counter = 0;
                 break;
                 }
             }
@@ -84,10 +85,9 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
-            turn_counter = 0;
+
         }
         if (ban == 2 && count !=1){
-            turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             const d1 = new Date();
@@ -98,6 +98,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 ban = 1;
                 write_koma();
                 write_turn();
+                turn_counter = 0;
                 break;
                 }
             }
@@ -106,7 +107,7 @@ socket_1.on("end_koma_server",(mess)=>{
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
-            turn_counter = 0;
+
         }
     }
 })

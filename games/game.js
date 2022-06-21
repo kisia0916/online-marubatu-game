@@ -71,7 +71,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 ban = 2;
                 write_koma();
                 write_turn();
-                turn_counter = 0;
+                //turn_counter = 0;
                 break;
                 }
             }
@@ -98,7 +98,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 ban = 1;
                 write_koma();
                 write_turn();
-                turn_counter = 0;
+                //turn_counter = 0;
                 break;
                 }
             }
@@ -556,6 +556,7 @@ function main_program_2(){
             socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
             window.sessionStorage.setItem(['k90'],"");
             window.sessionStorage.setItem(['k100'],"");
+            turn_counter = 0;
         }
             
     }

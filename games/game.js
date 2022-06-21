@@ -60,6 +60,8 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
+            write_koma();
+            write_turn();
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
@@ -75,6 +77,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 break;
                 }
             }
+
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
@@ -89,19 +92,22 @@ socket_1.on("end_koma_server",(mess)=>{
         }
         if (ban == 2 && count !=1){
             //main_program_2()
+            write_koma();
+            write_turn();
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 300) {
-                
                 ban = 1;
+
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
                 break;
                 }
             }
+
             write_koma();
             write_turn();
             //main_program_2()

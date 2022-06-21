@@ -130,7 +130,7 @@ function get_mouse(e){
 }
 let frag = false;
 function get_mouse_button_fun(){
-    main_program_2();
+    //main_program_2();
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
         console.log(turn);
         console.log("kkey"+turn)

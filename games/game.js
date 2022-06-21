@@ -69,6 +69,7 @@ socket_1.on("end_koma_server",(mess)=>{
             const d2 = new Date();
             if (d2 - d1 > 300) {
                 ban = 2;
+                turn_counter = 0;
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
@@ -96,6 +97,7 @@ socket_1.on("end_koma_server",(mess)=>{
             if (d2 - d1 > 300) {
                 
                 ban = 1;
+                turn_counter = 0;
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
@@ -556,7 +558,7 @@ function main_program_2(){
             socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
             window.sessionStorage.setItem(['k90'],"");
             window.sessionStorage.setItem(['k100'],"");
-            turn_counter = 0;
+
         }
             
     }

@@ -60,7 +60,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-            turn_counter = 0;
+
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -84,9 +84,9 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
+            turn_counter = 0;
         }
         if (ban == 2 && count !=1){
-            turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             const d1 = new Date();
@@ -105,6 +105,7 @@ socket_1.on("end_koma_server",(mess)=>{
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
+            turn_counter = 0;
         }
     }
 })
@@ -151,7 +152,6 @@ function get_mouse_button_fun(){
                         while (true) {
                         const d2_2 = new Date();
                         if (d2_2 - d1_2 > 50) {
-                            turn_counter = 1;
                             break;
                             }
                         }
@@ -192,7 +192,6 @@ function get_mouse_button_fun(){
                     while (true) {
                     const d2_3 = new Date();
                     if (d2_3 - d1_3 > 50) {
-                        turn_counter = 1;
                         break;
                         }
                     }

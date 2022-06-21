@@ -130,7 +130,7 @@ function get_mouse(e){
 }
 let frag = false;
 function get_mouse_button_fun(){
-    //main_program_2();
+    main_program_2();
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
         console.log(turn);
         console.log("kkey"+turn)
@@ -138,6 +138,10 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                ///////////////////////////
                 //sleep(1000);
+                const d1_1 = new Date();
+                while (true) {
+                const d2_1 = new Date();
+                if (d2_1 - d1_1 > 150) {
                     if (turn_counter == 0){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
@@ -146,15 +150,18 @@ function get_mouse_button_fun(){
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-                    }
-                    
-                    const d1_2 = new Date();
-                    while (true) {
-                    const d2_2 = new Date();
-                    if (d2_2 - d1_2 > 300) {
-                        break;
+
+                        const d1_2 = new Date();
+                        while (true) {
+                        const d2_2 = new Date();
+                        if (d2_2 - d1_2 > 50) {
+                            break;
+                            }
                         }
                     }
+                    break;
+                    }
+                }
                 /*
                 const d1_2 = new Date();
                 while (true) {
@@ -172,7 +179,11 @@ function get_mouse_button_fun(){
         }else if (my_turn == 2){
             ///////////////////////////////////////
             //sleep(1000);
-            if (turn_counter == 0){
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 150) {
+                if (turn_counter == 0){
                     turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -180,12 +191,15 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-            }
-            
-            const d1_3 = new Date();
-            while (true) {
-            const d2_3 = new Date();
-            if (d2_3 - d1_3 > 300) {
+                    
+                    const d1_3 = new Date();
+                    while (true) {
+                    const d2_3 = new Date();
+                    if (d2_3 - d1_3 > 50) {
+                        break;
+                        }
+                    }
+                }
                 break;
                 }
             }

@@ -147,6 +147,13 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         turn_counter = 1;
+                        const d1_2 = new Date();
+                        while (true) {
+                        const d2_2 = new Date();
+                        if (d2_2 - d1_2 > 50) {
+                            break;
+                            }
+                        }
                     }
                     break;
                     }
@@ -180,6 +187,13 @@ function get_mouse_button_fun(){
                     write_koma();
                     write_turn();
                     turn_counter = 1;
+                    const d1_3 = new Date();
+                    while (true) {
+                    const d2_3 = new Date();
+                    if (d2_3 - d1_3 > 50) {
+                        break;
+                        }
+                    }
                 }
                 break;
                 }

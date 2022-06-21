@@ -60,8 +60,6 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-            write_koma();
-            write_turn();
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
@@ -77,7 +75,6 @@ socket_1.on("end_koma_server",(mess)=>{
                 break;
                 }
             }
-
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
@@ -92,22 +89,19 @@ socket_1.on("end_koma_server",(mess)=>{
         }
         if (ban == 2 && count !=1){
             //main_program_2()
-            write_koma();
-            write_turn();
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 300) {
+                
                 ban = 1;
-
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
                 break;
                 }
             }
-
             write_koma();
             write_turn();
             //main_program_2()
@@ -144,10 +138,6 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                ///////////////////////////
                 //sleep(1000);
-                const d1_1 = new Date();
-                while (true) {
-                const d2_1 = new Date();
-                if (d2_1 - d1_1 > 150) {
                     if (turn_counter == 0){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
@@ -156,18 +146,15 @@ function get_mouse_button_fun(){
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-
-                        const d1_2 = new Date();
-                        while (true) {
-                        const d2_2 = new Date();
-                        if (d2_2 - d1_2 > 50) {
-                            break;
-                            }
+                    }
+                    
+                    const d1_2 = new Date();
+                    while (true) {
+                    const d2_2 = new Date();
+                    if (d2_2 - d1_2 > 300) {
+                        break;
                         }
                     }
-                    break;
-                    }
-                }
                 /*
                 const d1_2 = new Date();
                 while (true) {
@@ -185,11 +172,7 @@ function get_mouse_button_fun(){
         }else if (my_turn == 2){
             ///////////////////////////////////////
             //sleep(1000);
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 150) {
-                if (turn_counter == 0){
+            if (turn_counter == 0){
                     turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -197,15 +180,12 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-                    
-                    const d1_3 = new Date();
-                    while (true) {
-                    const d2_3 = new Date();
-                    if (d2_3 - d1_3 > 50) {
-                        break;
-                        }
-                    }
-                }
+            }
+            
+            const d1_3 = new Date();
+            while (true) {
+            const d2_3 = new Date();
+            if (d2_3 - d1_3 > 300) {
                 break;
                 }
             }

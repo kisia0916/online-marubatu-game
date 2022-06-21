@@ -138,7 +138,7 @@ function get_mouse_button_fun(){
                 const d1 = new Date();
                 while (true) {
                 const d2 = new Date();
-                if (d2 - d1 > 100) {
+                if (d2 - d1 > 150) {
                     if (turn_counter == 0){
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -147,14 +147,14 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         turn_counter = 1;
-                        const d1 = new Date();
-                        while (true) {
-                        const d2 = new Date();
-                        if (d2 - d1 > 100) {
-                            break;
-                            }
-                        }
                     }
+                    break;
+                    }
+                }
+                const d1_2 = new Date();
+                while (true) {
+                const d2_2 = new Date();
+                if (d2_2 - d1_2 > 100) {
                     break;
                     }
                 }
@@ -169,7 +169,7 @@ function get_mouse_button_fun(){
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 100) {
+            if (d2 - d1 > 150) {
                 if (turn_counter == 0){
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -178,18 +178,17 @@ function get_mouse_button_fun(){
                     write_koma();
                     write_turn();
                     turn_counter = 1;
-                    const d1 = new Date();
-                    while (true) {
-                    const d2 = new Date();
-                    if (d2 - d1 > 100) {
-                        break;
-                        }
-                    }
                 }
                 break;
                 }
             }
-
+            const d1_3 = new Date();
+            while (true) {
+            const d2_3 = new Date();
+            if (d2_3 - d1_3 > 100) {
+                break;
+                }
+            }
             //turn_counter = 1
             
                     //game_stage[mouse_list_y][mouse_list_x] = 1;

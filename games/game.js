@@ -135,10 +135,10 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                ///////////////////////////
                 //sleep(1000);
-                const d1 = new Date();
+                const d1_1 = new Date();
                 while (true) {
-                const d2 = new Date();
-                if (d2 - d1 > 150) {
+                const d2_1 = new Date();
+                if (d2_1 - d1_1 > 150) {
                     if (turn_counter == 0){
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));

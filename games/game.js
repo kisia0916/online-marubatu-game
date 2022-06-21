@@ -60,7 +60,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         if (ban == 1){
-
+            turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -87,6 +87,7 @@ socket_1.on("end_koma_server",(mess)=>{
             turn_counter = 0;
         }
         if (ban == 2 && count !=1){
+            turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             const d1 = new Date();
@@ -141,13 +142,14 @@ function get_mouse_button_fun(){
                 const d2_1 = new Date();
                 if (d2_1 - d1_1 > 150) {
                     if (turn_counter == 0){
+                        turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-                        turn_counter = 1;
+
                         const d1_2 = new Date();
                         while (true) {
                         const d2_2 = new Date();
@@ -181,13 +183,14 @@ function get_mouse_button_fun(){
             const d2 = new Date();
             if (d2 - d1 > 150) {
                 if (turn_counter == 0){
+                    turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-                    turn_counter = 1;
+                    
                     const d1_3 = new Date();
                     while (true) {
                     const d2_3 = new Date();

@@ -72,6 +72,7 @@ socket_1.on("end_koma_server",(mess)=>{
             if (d2 - d1 > 300) {
                 ban = 2;
                 turn_counter = 0;
+                turn_change_counter = 0;
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
@@ -99,9 +100,11 @@ socket_1.on("end_koma_server",(mess)=>{
             if (d2 - d1 > 300) {
                 
                 ban = 1;
+                turn_change_counter = 0;
                 turn_counter = 0;
                 write_koma();
                 write_turn();
+
                 //turn_counter = 0;
                 break;
                 }
@@ -154,7 +157,7 @@ function get_mouse_button_fun(){
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-                        turn_change_counter = 0;
+
                         const d1_2 = new Date();
                         while (true) {
                         const d2_2 = new Date();
@@ -196,7 +199,7 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-                    turn_change_counter = 0;
+
                     const d1_3 = new Date();
                     while (true) {
                     const d2_3 = new Date();

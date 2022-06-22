@@ -154,7 +154,7 @@ function get_mouse_button_fun(){
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-
+                        turn_change_counter = 0;
                         const d1_2 = new Date();
                         while (true) {
                         const d2_2 = new Date();
@@ -162,7 +162,7 @@ function get_mouse_button_fun(){
                             break;
                             }
                         }
-                        turn_change_counter = 0;
+                        
                     }
                     break;
                     }
@@ -196,7 +196,7 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-                    
+                    turn_change_counter = 0;
                     const d1_3 = new Date();
                     while (true) {
                     const d2_3 = new Date();
@@ -204,7 +204,7 @@ function get_mouse_button_fun(){
                         break;
                         }
                     }
-                    turn_change_counter = 0;
+                    
                 }
                 break;
                 }
@@ -579,11 +579,13 @@ function main_program_2(){
                 }
                 console.log("ccccccccccccccccccccccc"+koma_counter_1);
                 console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
-                if (koma_counter_2>koma_counter_1 && turn_change_counter == 0){
-                    socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                    window.sessionStorage.setItem(['k90'],"");
-                    window.sessionStorage.setItem(['k100'],"");
-                    turn_change_counter = 1;
+                if (koma_counter_2>koma_counter_1){
+                    if (turn_change_counter == 0){
+                        socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+                        window.sessionStorage.setItem(['k90'],"");
+                        window.sessionStorage.setItem(['k100'],"");
+                        turn_change_counter = 1;
+                    }
                 }
 
         }

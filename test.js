@@ -24,15 +24,7 @@ let test = [
   [0,1,0],
   [0,0,0]
 ]
-let test_2 = test;
-let test_3 = test;
-for (let i = 0;2>=i;i++){
-  for (let s =0;2>=s;s++){
-    if (test_2[i][s] == 1){
-      console.log("aaa");
-    }
-    if (test_3[i][s] == 1){
-      console.log("bbb");
-    }
-  }
+let test_2 = "abcdefghisklmnopq";
+for (let i = 0;16>=i;i++){
+  console.log(test_2[i])
 }

@@ -1,3 +1,4 @@
+
 let socket_1 = io();
 
 
@@ -516,10 +517,12 @@ function main_program_2(){
     write_turn();
     let test_list_2 = [[0],[0],[0]];
     turn = window.sessionStorage.getItem(['key5']);
+
     if (window.sessionStorage.getItem(['key3'])){
         //console.log("aaaa");
         let test_list;
         window.sessionStorage.setItem(['k100'],game_stage);
+        let brfore_stage = window.sessionStorage.getItem(['k100']);
         test_list = window.sessionStorage.getItem(['key3']);//セッションに入ったやつは配列じゃなくなるから変換が必要
         let c1 =  test_list.substring(0,1);
         let c2 = test_list.substring(2,3);
@@ -553,11 +556,31 @@ function main_program_2(){
         */
         //console.log(game_stage);
         window.sessionStorage.setItem(['k90'],game_stage);
+        let after_stage = window.sessionStorage.getItem(['k90']);
         write_koma()
         if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
-            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-            window.sessionStorage.setItem(['k90'],"");
-            window.sessionStorage.setItem(['k100'],"");
+            let koma_counter_1 = 0;
+            let koma_counter_2 = 0;
+            console.log("aaaaaaa");
+            console.log(brfore_stage);
+            console.log(after_stage)
+                for (let s =0;17>=s;s++){
+                  if (brfore_stage[s] == 1 || brfore_stage[s] == 2){
+                    console.log("aaa");
+                    koma_counter_1 = koma_counter_1 +1;
+                  }
+                  if (after_stage[s] == 1 || after_stage[s] == 2){
+                    console.log("bbb");
+                    koma_counter_2 = koma_counter_2 +1;
+                  }
+                }
+                console.log("ccccccccccccccccccccccc"+koma_counter_1);
+                console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
+                if (koma_counter_2>koma_counter_1){
+                    socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+                    window.sessionStorage.setItem(['k90'],"");
+                    window.sessionStorage.setItem(['k100'],"");
+                }
 
         }
             

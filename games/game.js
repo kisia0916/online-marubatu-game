@@ -10,6 +10,7 @@ document.body.style.overflow = "hidden";
 canvas.style.textAlign = "center";
 let can_width = '600';
 let can_heght = '400';
+let koma_oki = 0;
 let moouse_x,moouse_y;
 let turn = 1;
 let test_counter = 0;
@@ -149,7 +150,7 @@ function get_mouse_button_fun(){
                 while (true) {
                 const d2_1 = new Date();
                 if (d2_1 - d1_1 > 150) {
-                    if (turn_counter == 0){
+                    if (turn_counter == 0 &&koma_oki == 0){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -157,7 +158,7 @@ function get_mouse_button_fun(){
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-
+                        koma_oki = 1;
                         const d1_2 = new Date();
                         while (true) {
                         const d2_2 = new Date();
@@ -191,7 +192,7 @@ function get_mouse_button_fun(){
             while (true) {
             const d2 = new Date();
             if (d2 - d1 > 150) {
-                if (turn_counter == 0){
+                if (turn_counter == 0 &&koma_oki == 0){
                     turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -199,7 +200,7 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-
+                    koma_oki = 1;
                     const d1_3 = new Date();
                     while (true) {
                     const d2_3 = new Date();
@@ -588,6 +589,8 @@ function main_program_2(){
                         window.sessionStorage.setItem(['k90'],"");
                         window.sessionStorage.setItem(['k100'],"");
                         turn_change_counter = 1;
+                        koma_oki = 0;
+
                     }
                 }
 

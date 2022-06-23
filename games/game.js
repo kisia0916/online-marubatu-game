@@ -86,7 +86,6 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
-
         }
         if (ban == 2 && count !=1){
             //main_program_2()
@@ -108,8 +107,6 @@ socket_1.on("end_koma_server",(mess)=>{
             write_turn();
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-            console.log("dddd"+ban);
-
         }
     }
 })

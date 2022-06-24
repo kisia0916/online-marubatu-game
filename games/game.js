@@ -158,28 +158,14 @@ function get_mouse_button_fun(){
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
-                        koma_oki = 1;
-                        const d1_2 = new Date();
-                        while (true) {
-                        const d2_2 = new Date();
-                        if (d2_2 - d1_2 > 50) {
-                            break;
-                            }
-                        }
+                        //koma_oki = 1;
+
                         
                     }
                     break;
                     }
                 }
-                /*
-                const d1_2 = new Date();
-                while (true) {
-                const d2_2 = new Date();
-                if (d2_2 - d1_2 > 50) {
-                    break;
-                    }
-                }
-                */
+
                 //turn_counter = 1;
 
                 //main_program_2()///
@@ -200,19 +186,14 @@ function get_mouse_button_fun(){
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
-                    koma_oki = 1;
-                    const d1_3 = new Date();
-                    while (true) {
-                    const d2_3 = new Date();
-                    if (d2_3 - d1_3 > 50) {
-                        break;
-                        }
-                    }
+
                     
                 }
                 break;
                 }
             }
+
+
             /*
             const d1_3 = new Date();
             while (true) {
@@ -235,6 +216,14 @@ function get_mouse_button_fun(){
         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
         //Jatch_win()
         //setTimeout(3000);
+        koma_oki = 1;
+        const d1_3 = new Date();
+        while (true) {
+        const d2_3 = new Date();
+        if (d2_3 - d1_3 > 100) {
+            break;
+            }
+        }
     }
 
 }

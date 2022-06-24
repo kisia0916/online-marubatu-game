@@ -67,10 +67,6 @@ socket_1.on("end_koma_server",(mess)=>{
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 300) {
                 ban = 2;
                 kari_turn = 0;
                 turn_counter = 0;
@@ -78,9 +74,6 @@ socket_1.on("end_koma_server",(mess)=>{
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
-                break;
-                }
-            }
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
@@ -96,10 +89,7 @@ socket_1.on("end_koma_server",(mess)=>{
         if (ban == 2 && count !=1){
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 300) {
+
                 
                 ban = 1;
                 kari_turn = 0;
@@ -109,9 +99,6 @@ socket_1.on("end_koma_server",(mess)=>{
                 write_turn();
 
                 //turn_counter = 0;
-                break;
-                }
-            }
             write_koma();
             write_turn();
             //main_program_2()
@@ -141,11 +128,12 @@ function get_mouse(e){
 let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
-    if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
-        console.log(turn);
-        console.log("kkey"+turn)
-        mouse_click = 1;
-        if (my_turn == 1){
+    if (my_turn == ban ){
+        if(game_stage[mouse_list_y][mouse_list_x] == 0){
+            console.log(turn);
+            console.log("kkey"+turn)
+            mouse_click = 1;
+            if (my_turn == 1){
                ///////////////////////////
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
@@ -158,14 +146,6 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         koma_oki = 1;
-
-                        const d1_2 = new Date();
-                        while (true) {
-                        const d2_2 = new Date();
-                        if (d2_2 - d1_2 > 150) {
-                            break;
-                            }
-                        }
                         
                 }
                 /*
@@ -195,13 +175,6 @@ function get_mouse_button_fun(){
                     write_koma();
                     write_turn();
                     koma_oki = 1;
-                    const d1_3 = new Date();
-                    while (true) {
-                    const d2_3 = new Date();
-                    if (d2_3 - d1_3 > 150) {
-                        break;
-                        }
-                    }
                     
                 }
             /*
@@ -227,6 +200,7 @@ function get_mouse_button_fun(){
         //Jatch_win()
         //setTimeout(3000);
     }
+}
 
 }
 function maru_list(){

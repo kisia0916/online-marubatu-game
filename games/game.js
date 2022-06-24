@@ -1,4 +1,3 @@
-
 let socket_1 = io();
 
 
@@ -159,16 +158,15 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         koma_oki = 1;
-
+                        const d1_2 = new Date();
+                        while (true) {
+                        const d2_2 = new Date();
+                        if (d2_2 - d1_2 > 150) {
+                            break;
+                            }
+                        }
                         
                     }
-                    break;
-                    }
-                }
-                const d1_2 = new Date();
-                while (true) {
-                const d2_2 = new Date();
-                if (d2_2 - d1_2 > 300) {
                     break;
                     }
                 }
@@ -202,19 +200,18 @@ function get_mouse_button_fun(){
                     write_koma();
                     write_turn();
                     koma_oki = 1;
+                    const d1_3 = new Date();
+                    while (true) {
+                    const d2_3 = new Date();
+                    if (d2_3 - d1_3 > 150) {
+                        break;
+                        }
+                    }
                     
                 }
                 break;
                 }
             }
-            const d1_3 = new Date();
-            while (true) {
-            const d2_3 = new Date();
-            if (d2_3 - d1_3 > 300) {
-                break;
-                }
-            }
-
             /*
             const d1_3 = new Date();
             while (true) {

@@ -17,6 +17,7 @@ let j_drow = 0;
 let turn_change_counter = 0;
 let mouse_click = 0;
 let mouse_list_x;
+let kari_turn = 0;
 let mouse_list_y;
 let turn_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
@@ -71,6 +72,7 @@ socket_1.on("end_koma_server",(mess)=>{
             const d2 = new Date();
             if (d2 - d1 > 300) {
                 ban = 2;
+                kari_turn = 0;
                 turn_counter = 0;
                 turn_change_counter = 0;
                 write_koma();
@@ -100,6 +102,7 @@ socket_1.on("end_koma_server",(mess)=>{
             if (d2 - d1 > 300) {
                 
                 ban = 1;
+                kari_turn = 0;
                 turn_change_counter = 0;
                 turn_counter = 0;
                 write_koma();
@@ -144,20 +147,18 @@ function get_mouse_button_fun(){
         mouse_click = 1;
         if (my_turn == 1){
                ///////////////////////////
-                //sleep(1000);
-                const d1_1 = new Date();
-                while (true) {
-                const d2_1 = new Date();
-                if (d2_1 - d1_1 > 150) {
-                    if (turn_counter == 0 &&koma_oki == 0){
+
+                    if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
+                        kari_turn = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
                         koma_oki = 1;
+
                         const d1_2 = new Date();
                         while (true) {
                         const d2_2 = new Date();
@@ -166,9 +167,6 @@ function get_mouse_button_fun(){
                             }
                         }
                         
-                    }
-                    break;
-                    }
                 }
                 /*
                 const d1_2 = new Date();
@@ -187,13 +185,10 @@ function get_mouse_button_fun(){
         }else if (my_turn == 2){
             ///////////////////////////////////////
             //sleep(1000);
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 150) {
-                if (turn_counter == 0 &&koma_oki == 0){
+                if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
                     turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
+                    kari_turn = 1;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -209,9 +204,6 @@ function get_mouse_button_fun(){
                     }
                     
                 }
-                break;
-                }
-            }
             /*
             const d1_3 = new Date();
             while (true) {

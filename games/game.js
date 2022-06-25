@@ -12,7 +12,7 @@ let can_heght = '400';
 let koma_oki = 0;
 let moouse_x,moouse_y;
 let turn = 1;
-let play_count = 0;
+let play_count = 1;
 let test_counter = 0;
 let j_drow = 0;
 let turn_change_counter = 0;
@@ -64,6 +64,11 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
+        const d1 = new Date();
+        while (true) {
+        const d2 = new Date();
+        if (d2 - d1 > 300) {
+            play_count = 1;
         if (ban == 1){
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
@@ -111,6 +116,9 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
 
         }
+            break;
+            }
+        }
     }
 })
 socket_1.on("distract_sesstion",(user)=>{
@@ -142,7 +150,7 @@ function get_mouse_button_fun(){
                ///////////////////////////
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
-                        play_count +=1;
+                        //play_count =1;
                         if (play_count ==1){
                             turn_counter = 1;
                             game_stage[mouse_list_y][mouse_list_x] = 1;
@@ -154,6 +162,7 @@ function get_mouse_button_fun(){
                             write_koma();
                             write_turn();
                             koma_oki = 1;
+                            play_count = 0;
 
                         }
                 }
@@ -175,7 +184,7 @@ function get_mouse_button_fun(){
             ///////////////////////////////////////
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
-                    play_count +=1;
+                    //play_count +=1;
                     if (play_count == 1){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 2;
@@ -187,6 +196,7 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         koma_oki = 1;
+                        play_count = 0;
                     }
                 }
             /*

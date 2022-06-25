@@ -67,7 +67,7 @@ socket_1.on("end_koma_server",(mess)=>{
         const d1 = new Date();
         while (true) {
         const d2 = new Date();
-        if (d2 - d1 > 10) {
+        if (d2 - d1 > 300) {
             play_count = 1;
         if (ban == 1){
             //turn_counter = 0;
@@ -148,8 +148,10 @@ function get_mouse_button_fun(){
             mouse_click = 1;
             if (my_turn == 1){
                ///////////////////////////
+
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         //play_count =1;
+                        if (play_count ==1){
                             turn_counter = 1;
                             game_stage[mouse_list_y][mouse_list_x] = 1;
                             kari_turn = 1;
@@ -163,6 +165,7 @@ function get_mouse_button_fun(){
                             play_count = 0;
 
                         }
+                }
                 /*
                 const d1_2 = new Date();
                 while (true) {
@@ -182,6 +185,7 @@ function get_mouse_button_fun(){
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
                     //play_count +=1;
+                    if (play_count == 1){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 2;
                         kari_turn = 1;
@@ -194,6 +198,7 @@ function get_mouse_button_fun(){
                         koma_oki = 1;
                         play_count = 0;
                     }
+                }
             /*
             const d1_3 = new Date();
             while (true) {

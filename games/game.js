@@ -146,12 +146,14 @@ function get_mouse_button_fun(){
                             turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         kari_turn = 1;
+                        ban = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
                         koma_oki = 1;
+
                         }
                 }
                 /*
@@ -177,12 +179,14 @@ function get_mouse_button_fun(){
                     turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     kari_turn = 1;
+                    ban = 2;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                     write_koma();
                     write_turn();
                     koma_oki = 1;
+
                     }
                 }
             /*

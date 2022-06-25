@@ -64,8 +64,12 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
+        const d1 = new Date();
+        while (true) {
+        const d2 = new Date();
+        if (d2 - d1 > 300) {
             play_count = 1;
-            if (ban == 1){
+        if (ban == 1){
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
@@ -111,8 +115,11 @@ socket_1.on("end_koma_server",(mess)=>{
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
 
+        }
+            break;
             }
         }
+    }
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){
@@ -135,7 +142,6 @@ let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
     if (my_turn == ban){
-        //play_count = 1;
         if(game_stage[mouse_list_y][mouse_list_x] == 0){
             console.log(turn);
             console.log("kkey"+turn)

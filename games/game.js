@@ -12,6 +12,7 @@ let can_heght = '400';
 let koma_oki = 0;
 let moouse_x,moouse_y;
 let turn = 1;
+let play_count = 0;
 let test_counter = 0;
 let j_drow = 0;
 let turn_change_counter = 0;
@@ -68,6 +69,7 @@ socket_1.on("end_koma_server",(mess)=>{
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
                 ban = 2;
+                play_count = 0;
                 kari_turn = 0;
                 turn_counter = 0;
                 turn_change_counter = 0;
@@ -92,6 +94,7 @@ socket_1.on("end_koma_server",(mess)=>{
 
                 
                 ban = 1;
+                play_count = 0;
                 kari_turn = 0;
                 turn_change_counter = 0;
                 turn_counter = 0;
@@ -137,7 +140,10 @@ function get_mouse_button_fun(){
                ///////////////////////////
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
-                        turn_counter = 1;
+
+                        play_count += 1;
+                        if (play_count ==1){
+                            turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         kari_turn = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
@@ -146,7 +152,7 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         koma_oki = 1;
-                        
+                        }
                 }
                 /*
                 const d1_2 = new Date();
@@ -166,6 +172,8 @@ function get_mouse_button_fun(){
             ///////////////////////////////////////
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
+                    play_count +=1;
+                    if (play_count == 1){
                     turn_counter = 1;
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     kari_turn = 1;
@@ -175,7 +183,7 @@ function get_mouse_button_fun(){
                     write_koma();
                     write_turn();
                     koma_oki = 1;
-                    
+                    }
                 }
             /*
             const d1_3 = new Date();

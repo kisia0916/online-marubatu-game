@@ -67,7 +67,7 @@ socket_1.on("end_koma_server",(mess)=>{
         const d1 = new Date();
         while (true) {
         const d2 = new Date();
-        if (d2 - d1 > 300) {
+        if (d2 - d1 > 200) {
             play_count = 1;
         if (ban == 1){
             //turn_counter = 0;

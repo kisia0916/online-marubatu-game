@@ -67,7 +67,7 @@ socket_1.on("end_koma_server",(mess)=>{
         const d1 = new Date();
         while (true) {
         const d2 = new Date();
-        if (d2 - d1 > 300) {
+        if (d2 - d1 > 10) {
             play_count = 1;
         if (ban == 1){
             //turn_counter = 0;
@@ -148,7 +148,6 @@ function get_mouse_button_fun(){
             mouse_click = 1;
             if (my_turn == 1){
                ///////////////////////////
-
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         //play_count =1;
                             turn_counter = 1;

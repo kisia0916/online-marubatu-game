@@ -576,14 +576,12 @@ function main_program_2(){
                 console.log("ccccccccccccccccccccccc"+koma_counter_1);
                 console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
                 if (koma_counter_2>koma_counter_1){
-                    if (turn_change_counter == 0){
                         socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
                         window.sessionStorage.setItem(['k90'],"");
                         window.sessionStorage.setItem(['k100'],"");
                         turn_change_counter = 1;
                         koma_oki = 0;
 
-                    }
                 }
                 play_count = 0;
 

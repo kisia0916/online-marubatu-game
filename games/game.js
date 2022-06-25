@@ -69,7 +69,7 @@ socket_1.on("end_koma_server",(mess)=>{
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
                 ban = 2;
-                play_count = 0;
+                //play_count = 0;
                 kari_turn = 0;
                 turn_counter = 0;
                 turn_change_counter = 0;
@@ -79,7 +79,7 @@ socket_1.on("end_koma_server",(mess)=>{
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
-
+            //play_count = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
@@ -94,7 +94,7 @@ socket_1.on("end_koma_server",(mess)=>{
 
                 
                 ban = 1;
-                play_count = 0;
+                //play_count = 0;
                 kari_turn = 0;
                 turn_change_counter = 0;
                 turn_counter = 0;
@@ -104,6 +104,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 //turn_counter = 0;
             write_koma();
             write_turn();
+            //play_count = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
@@ -567,7 +568,7 @@ function main_program_2(){
                         window.sessionStorage.setItem(['k100'],"");
                         turn_change_counter = 1;
                         koma_oki = 0;
-
+                        play_count = 0;
                     }
                 }
 

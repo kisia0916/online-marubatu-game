@@ -64,10 +64,6 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
-        const d1 = new Date();
-        while (true) {
-        const d2 = new Date();
-        if (d2 - d1 > 50) {
             play_count = 1;
         if (ban == 1){
             //turn_counter = 0;
@@ -115,11 +111,8 @@ socket_1.on("end_koma_server",(mess)=>{
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
 
-        }
-            break;
             }
         }
-    }
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){

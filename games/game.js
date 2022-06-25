@@ -142,6 +142,7 @@ let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
     if (my_turn == ban){
+        play_count = 1;
         if(game_stage[mouse_list_y][mouse_list_x] == 0){
             console.log(turn);
             console.log("kkey"+turn)

@@ -65,7 +65,7 @@ socket_1.on("end_koma_server",(mess)=>{
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
             play_count = 1;
-        if (ban == 1){
+            if (ban == 1){
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()

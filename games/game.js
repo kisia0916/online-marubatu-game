@@ -63,6 +63,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log(mess);
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
+        play_count = 0;
         if (ban == 1){
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
@@ -132,7 +133,7 @@ function get_mouse(e){
 let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
-    if (my_turn == ban ){
+    if (my_turn == ban){
         if(game_stage[mouse_list_y][mouse_list_x] == 0){
             console.log(turn);
             console.log("kkey"+turn)
@@ -141,19 +142,18 @@ function get_mouse_button_fun(){
                ///////////////////////////
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
-
-                        play_count += 1;
+                        play_count +=1;
                         if (play_count ==1){
                             turn_counter = 1;
-                        game_stage[mouse_list_y][mouse_list_x] = 1;
-                        kari_turn = 1;
-                        ban = 1;
-                        socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
-                        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
-                        socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
-                        write_koma();
-                        write_turn();
-                        koma_oki = 1;
+                            game_stage[mouse_list_y][mouse_list_x] = 1;
+                            kari_turn = 1;
+                            //ban = 1;
+                            socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                            socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
+                            write_koma();
+                            write_turn();
+                            koma_oki = 1;
 
                         }
                 }
@@ -177,17 +177,16 @@ function get_mouse_button_fun(){
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
                     play_count +=1;
                     if (play_count == 1){
-                    turn_counter = 1;
-                    game_stage[mouse_list_y][mouse_list_x] = 2;
-                    kari_turn = 1;
-                    ban = 2;
-                    socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
-                    socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
-                    socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
-                    write_koma();
-                    write_turn();
-                    koma_oki = 1;
-
+                        turn_counter = 1;
+                        game_stage[mouse_list_y][mouse_list_x] = 2;
+                        kari_turn = 1;
+                        //ban = 2;
+                        socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                        socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
+                        write_koma();
+                        write_turn();
+                        koma_oki = 1;
                     }
                 }
             /*
@@ -568,7 +567,7 @@ function main_program_2(){
                         window.sessionStorage.setItem(['k100'],"");
                         turn_change_counter = 1;
                         koma_oki = 0;
-                        play_count = 0;
+
                     }
                 }
 

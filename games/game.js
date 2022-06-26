@@ -65,6 +65,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
+        ban_ban_counter = 0;
         const d1 = new Date();
         while (true) {
         const d2 = new Date();
@@ -587,7 +588,7 @@ function main_program_2(){
                         turn_change_counter = 1;
                         koma_oki = 0;
                         play_count = 0;
-                        ban_ban_counter = 0;
+                        
                     }
                 }
                 

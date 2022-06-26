@@ -559,7 +559,7 @@ function main_program_2(){
             console.log("aaaaaaa");
             console.log(brfore_stage);
             console.log(after_stage)
-                for (let s =0;16>=s;s++){
+                for (let s =0;17>=s;s++){
                   if (brfore_stage[s] == 1 || brfore_stage[s] == 2){
                     console.log("aaa");
                     koma_counter_1 = koma_counter_1 +1;

@@ -21,6 +21,7 @@ let mouse_list_x;
 let kari_turn = 0;
 let mouse_list_y;
 let turn_counter = 0;
+let pro_hen =0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -64,11 +65,6 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
-        const d1 = new Date();
-        while (true) {
-        const d2 = new Date();
-        if (d2 - d1 > 300) {
-
         if (ban == 1){
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
@@ -116,10 +112,6 @@ socket_1.on("end_koma_server",(mess)=>{
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
-
-        }
-            break;
-            }
         }
     }
 })

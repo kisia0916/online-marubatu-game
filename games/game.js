@@ -215,7 +215,7 @@ function get_mouse_button_fun(){
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         if (ban_ban_counter == 0&& play_count !=0){
-                            //play_count = 0;
+                            play_count = 0;
                         }
                         play_count +=1;
                         if (play_count <=1){
@@ -254,7 +254,7 @@ function get_mouse_button_fun(){
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
                     if (ban_ban_counter == 0&& play_count !=0){
-                        //play_count = 0;
+                        play_count = 0;
                     }
                     play_count +=1;
                     if (play_count <= 1){

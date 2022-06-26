@@ -12,7 +12,7 @@ let can_heght = '400';
 let koma_oki = 0;
 let moouse_x,moouse_y;
 let turn = 1;
-let play_count = 0;
+let play_count = 1;
 let test_counter = 0;
 let j_drow = 0;
 let turn_change_counter = 0;
@@ -21,7 +21,6 @@ let mouse_list_x;
 let kari_turn = 0;
 let mouse_list_y;
 let turn_counter = 0;
-let pro_hen =0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -65,6 +64,11 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
+        const d1 = new Date();
+        while (true) {
+        const d2 = new Date();
+        if (d2 - d1 > 100) {
+            play_count = 1;
         if (ban == 1){
             //turn_counter = 0;
             //ここにすうびょう松処理を入れる
@@ -75,7 +79,6 @@ socket_1.on("end_koma_server",(mess)=>{
                 kari_turn = 0;
                 turn_counter = 0;
                 turn_change_counter = 0;
-                play_count = 0;
                 write_koma();
                 write_turn();
                 //turn_counter = 0;
@@ -101,7 +104,6 @@ socket_1.on("end_koma_server",(mess)=>{
                 kari_turn = 0;
                 turn_change_counter = 0;
                 turn_counter = 0;
-                play_count = 0;
                 write_koma();
                 write_turn();
 
@@ -112,6 +114,10 @@ socket_1.on("end_koma_server",(mess)=>{
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
+
+        }
+            break;
+            }
         }
     }
 })
@@ -145,7 +151,7 @@ function get_mouse_button_fun(){
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         //play_count =1;
-                        console.log("maenotoko:"+play_count)
+                        if (play_count ==1){
                             turn_counter = 1;
                             game_stage[mouse_list_y][mouse_list_x] = 1;
                             kari_turn = 1;
@@ -156,9 +162,10 @@ function get_mouse_button_fun(){
                             write_koma();
                             write_turn();
                             koma_oki = 1;
-                            //play_count = 0;
+                            play_count = 0;
 
                         }
+                }
                 /*
                 const d1_2 = new Date();
                 while (true) {
@@ -178,7 +185,7 @@ function get_mouse_button_fun(){
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
                     //play_count +=1;
-                    console.log("maenotoko:"+play_count)
+                    if (play_count == 1){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 2;
                         kari_turn = 1;
@@ -189,8 +196,9 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         koma_oki = 1;
-                        //play_count = 0;
+                        play_count = 0;
                     }
+                }
             /*
             const d1_3 = new Date();
             while (true) {
@@ -475,7 +483,6 @@ function main_program(){
 let text = "";
 function write_turn(){
     //console.log(my_turn);
-    //Jatch_win();
     if (ban == my_turn && my_turn == 1){
         ctx.fillStyle = "#0ff";
         ctx.font = "50px cursive";
@@ -551,7 +558,7 @@ function main_program_2(){
             console.log("aaaaaaa");
             console.log(brfore_stage);
             console.log(after_stage)
-                for (let s =0;17>s;s++){
+                for (let s =0;16>=s;s++){
                   if (brfore_stage[s] == 1 || brfore_stage[s] == 2){
                     console.log("aaa");
                     koma_counter_1 = koma_counter_1 +1;
@@ -564,12 +571,14 @@ function main_program_2(){
                 console.log("ccccccccccccccccccccccc"+koma_counter_1);
                 console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
                 if (koma_counter_2>koma_counter_1){
+                    if (turn_change_counter == 0){
                         socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
                         window.sessionStorage.setItem(['k90'],"");
                         window.sessionStorage.setItem(['k100'],"");
                         turn_change_counter = 1;
                         koma_oki = 0;
 
+                    }
                 }
                 play_count = 0;
 

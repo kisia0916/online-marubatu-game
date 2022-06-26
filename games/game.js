@@ -17,6 +17,7 @@ let test_counter = 0;
 let j_drow = 0;
 let turn_change_counter = 0;
 let mouse_click = 0;
+let ban_ban_counter = 0;
 let mouse_list_x;
 let kari_turn = 0;
 let mouse_list_y;
@@ -150,6 +151,9 @@ function get_mouse_button_fun(){
                ///////////////////////////
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
+                        if (ban_ban_counter == 0&& play_count !=0){
+                            play_count = 0;
+                        }
                         play_count +=1;
                         if (play_count <=1){
                             turn_counter = 1;
@@ -162,6 +166,7 @@ function get_mouse_button_fun(){
                             write_koma();
                             write_turn();
                             koma_oki = 1;
+                            ban_ban_counter = 1;
                             //play_count = 0;
 
                         }
@@ -184,6 +189,9 @@ function get_mouse_button_fun(){
             ///////////////////////////////////////
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
+                    if (ban_ban_counter == 0&& play_count !=0){
+                        play_count = 0;
+                    }
                     play_count +=1;
                     if (play_count <= 1){
                         turn_counter = 1;
@@ -196,6 +204,7 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         koma_oki = 1;
+                        ban_ban_counter = 1;
                         //play_count = 0;
                     }
                 }
@@ -578,6 +587,7 @@ function main_program_2(){
                         turn_change_counter = 1;
                         koma_oki = 0;
                         play_count = 0;
+                        ban_ban_counter = 0;
                     }
                 }
                 

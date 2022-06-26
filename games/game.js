@@ -76,7 +76,8 @@ socket_1.on("end_koma_server",(mess)=>{
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-            ban_ban_counter = 0;
+                play_count =0;
+                ban_ban_counter = 0;
                 ban = 2;
                 //play_count = 0;
                 kari_turn = 0;
@@ -100,8 +101,8 @@ socket_1.on("end_koma_server",(mess)=>{
         if (ban == 2 && count !=1){
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-
-            ban_ban_counter = 0;
+                play_count =0;
+                ban_ban_counter = 0;
                 ban = 1;
                 //play_count = 0;
                 kari_turn = 0;

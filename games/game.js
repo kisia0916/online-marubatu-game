@@ -225,11 +225,12 @@ function get_mouse_button_fun(){
                             }
                             play_count +=1;
                             if (play_count <=1){
-                                game_stage[mouse_list_y][mouse_list_x] = 1;
-                                push_counter = 1;
                                 osu_counter = 1;
                                 turn_counter = 1;
                                 kari_turn = 1;
+                                game_stage[mouse_list_y][mouse_list_x] = 1;
+                                push_counter = 1;
+
                                 //ban = 1;
                                 socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                                 socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
@@ -265,11 +266,12 @@ function get_mouse_button_fun(){
                         }
                         play_count +=1;
                         if (play_count <= 1){
-                            game_stage[mouse_list_y][mouse_list_x] = 2;
-                            push_counter = 1;
                             osu_counter = 1;
                             turn_counter = 1;
                             kari_turn = 1;
+                            game_stage[mouse_list_y][mouse_list_x] = 2;
+                            push_counter = 1;
+
                             //ban = 2;
                             socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                             socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));

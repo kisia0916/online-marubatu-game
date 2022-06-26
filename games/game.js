@@ -151,7 +151,7 @@ function get_mouse_button_fun(){
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         play_count +=1;
-                        if (play_count ==1){
+                        if (play_count <=1){
                             turn_counter = 1;
                             game_stage[mouse_list_y][mouse_list_x] = 1;
                             kari_turn = 1;
@@ -185,7 +185,7 @@ function get_mouse_button_fun(){
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
                     play_count +=1;
-                    if (play_count == 1){
+                    if (play_count <= 1){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 2;
                         kari_turn = 1;

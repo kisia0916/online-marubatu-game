@@ -153,9 +153,7 @@ function get_mouse_button_fun(){
 
                     if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
                         //play_count =1;
-                        play_count += 1;
                         console.log("maenotoko:"+play_count)
-                        if (play_count ==1){
                             turn_counter = 1;
                             game_stage[mouse_list_y][mouse_list_x] = 1;
                             kari_turn = 1;
@@ -169,7 +167,6 @@ function get_mouse_button_fun(){
                             //play_count = 0;
 
                         }
-                }
                 /*
                 const d1_2 = new Date();
                 while (true) {
@@ -188,9 +185,8 @@ function get_mouse_button_fun(){
             ///////////////////////////////////////
             //sleep(1000);
                 if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
-                    play_count +=1;
+                    //play_count +=1;
                     console.log("maenotoko:"+play_count)
-                    if (play_count == 1){
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 2;
                         kari_turn = 1;
@@ -203,7 +199,6 @@ function get_mouse_button_fun(){
                         koma_oki = 1;
                         //play_count = 0;
                     }
-                }
             /*
             const d1_3 = new Date();
             while (true) {
@@ -488,7 +483,7 @@ function main_program(){
 let text = "";
 function write_turn(){
     //console.log(my_turn);
-    Jatch_win();
+    //Jatch_win();
     if (ban == my_turn && my_turn == 1){
         ctx.fillStyle = "#0ff";
         ctx.font = "50px cursive";

@@ -22,6 +22,7 @@ let mouse_list_x;
 let kari_turn = 0;
 let mouse_list_y;
 let turn_counter = 0;
+let osu_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -65,7 +66,65 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
-        
+        if (osu_counter = 1 && ban == my_turn){
+                const d1 = new Date();
+                while (true) {
+                const d2 = new Date();
+                if (d2 - d1 > 100) {
+                    //play_count = 1;
+                if (ban == 1){
+                    //turn_counter = 0;
+                    //ここにすうびょう松処理を入れる
+                    //main_program_2()
+                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+                        play_count =0;
+                        ban_ban_counter = 0;
+                        ban = 2;
+                        //play_count = 0;
+                        kari_turn = 0;
+                        turn_counter = 0;
+                        turn_change_counter = 0;
+                        write_koma();
+                        write_turn();
+                        //turn_counter = 0;
+                    write_koma();
+                    write_turn();
+                    //駒のデータ送信もここで行う
+                    //play_count = 0;
+                    //main_program_2()
+                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+                    console.log("dddd"+ban);
+                    console.log(my_turn);
+                    count = 1;
+
+                }
+                if (ban == 2 && count !=1){
+                    //main_program_2()
+                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+                        play_count =0;
+                        ban_ban_counter = 0;
+                        ban = 1;
+                        //play_count = 0;
+                        kari_turn = 0;
+                        turn_change_counter = 0;
+                        turn_counter = 0;
+                        write_koma();
+                        write_turn();
+
+                        //turn_counter = 0;
+                    write_koma();
+                    write_turn();
+                    //play_count = 0;
+                    //main_program_2()
+                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
+                    console.log("dddd"+ban);
+
+                }
+                    break;
+                    }
+                }
+    }else if (my_turn != ban &&count !=1){
         const d1 = new Date();
         while (true) {
         const d2 = new Date();
@@ -122,8 +181,9 @@ socket_1.on("end_koma_server",(mess)=>{
         }
             break;
             }
-        }
+        }   
     }
+}
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){
@@ -159,6 +219,7 @@ function get_mouse_button_fun(){
                         }
                         play_count +=1;
                         if (play_count <=1){
+                            osu_counter = 1;
                             turn_counter = 1;
                             game_stage[mouse_list_y][mouse_list_x] = 1;
                             kari_turn = 1;
@@ -197,6 +258,7 @@ function get_mouse_button_fun(){
                     }
                     play_count +=1;
                     if (play_count <= 1){
+                        osu_counter = 1;
                         turn_counter = 1;
                         game_stage[mouse_list_y][mouse_list_x] = 2;
                         kari_turn = 1;

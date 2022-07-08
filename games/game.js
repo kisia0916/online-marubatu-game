@@ -24,7 +24,7 @@ let mouse_list_y;
 let turn_counter = 0;
 let osu_counter = 0;
 let push_counter = 0;
-let test_turn_counter = 1;
+let before_game_stage;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -49,7 +49,7 @@ socket_1.on("aite_nasi_1",(room)=>{
         test_list = null;
     }
 })
-*///plplplplp
+*/
 console.log(game_stage);
 //write_text();
 let ban = 1;
@@ -211,7 +211,6 @@ function get_mouse(e){
 let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
-    test_turn_counter = 1;
     if (push_counter == 0){
         if (my_turn == ban){
             if(game_stage[mouse_list_y][mouse_list_x] == 0){
@@ -230,10 +229,12 @@ function get_mouse_button_fun(){
                                 osu_counter = 1;
                                 turn_counter = 1;
                                 kari_turn = 1;
+                                before_game_stage = game_stage;
                                 game_stage[mouse_list_y][mouse_list_x] = 1;
                                 push_counter = 1;
 
                                 //ban = 1;
+                                if (before_game_stage == game_stage){
                                 socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                                 socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                                 socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -242,7 +243,7 @@ function get_mouse_button_fun(){
                                 koma_oki = 1;
                                 ban_ban_counter = 1;
                                 //play_count = 0;
-
+                                }
                             }
                     }
                     /*
@@ -271,10 +272,12 @@ function get_mouse_button_fun(){
                             osu_counter = 1;
                             turn_counter = 1;
                             kari_turn = 1;
+                            before_game_stage = game_stage;
                             game_stage[mouse_list_y][mouse_list_x] = 2;
                             push_counter = 1;
 
                             //ban = 2;
+                            if (before_game_stage != game_stage){
                             socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                             socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                             socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -283,6 +286,7 @@ function get_mouse_button_fun(){
                             koma_oki = 1;
                             ban_ban_counter = 1;
                             //play_count = 0;
+                            }
                         }
                     }
                 /*
@@ -659,15 +663,13 @@ function main_program_2(){
                 console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
                 if (koma_counter_2>koma_counter_1){
                     if (turn_change_counter == 0){
-                        if (test_turn_counter == 1){
-                            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                            window.sessionStorage.setItem(['k90'],"");
-                            window.sessionStorage.setItem(['k100'],"");
-                            turn_change_counter = 1;
-                            koma_oki = 0;
-                            play_count = 0;
-                            test_turn_counter = 0;
-                        }
+                        socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+                        window.sessionStorage.setItem(['k90'],"");
+                        window.sessionStorage.setItem(['k100'],"");
+                        turn_change_counter = 1;
+                        koma_oki = 0;
+                        play_count = 0;
+                        
                     }
                 }
                 

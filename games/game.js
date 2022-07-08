@@ -737,6 +737,14 @@ function main_program_3(){
                         koma_oki = 0;
                         play_count = 0;
                 }
+                if (turn_change_counter !=1){
+                    socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+                    window.sessionStorage.setItem(['k90'],"");
+                    window.sessionStorage.setItem(['k100'],"");
+                    turn_change_counter = 1;
+                    koma_oki = 0;
+                    play_count = 0;
+                }
                 }
                 
 

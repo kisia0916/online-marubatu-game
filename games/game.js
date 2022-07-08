@@ -728,7 +728,7 @@ function main_program_3(){
                 }
                 console.log("ccccccccccccccccccccccc"+koma_counter_1);
                 console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
-                if (koma_counter_2>koma_counter_1){
+                if (koma_counter_2>=koma_counter_1){
                     if (turn_change_counter == 0){
                         turn_change_counter = 1;
                         socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));

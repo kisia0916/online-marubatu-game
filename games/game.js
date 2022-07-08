@@ -9,21 +9,14 @@ document.body.style.overflow = "hidden";
 canvas.style.textAlign = "center";
 let can_width = '600';
 let can_heght = '400';
-let koma_oki = 0;
 let moouse_x,moouse_y;
 let turn = 1;
-let play_count = 0;
 let test_counter = 0;
 let j_drow = 0;
-let turn_change_counter = 0;
 let mouse_click = 0;
-let ban_ban_counter = 0;
 let mouse_list_x;
-let kari_turn = 0;
 let mouse_list_y;
 let turn_counter = 0;
-let osu_counter = 0;
-let push_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -66,116 +59,54 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log(mess);
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
-        //play_count = 0;
-        //turn_change_counter = 0;
-        if (osu_counter = 1 && ban == my_turn){
-                    //play_count = 1;
-                if (ban == 1){
-                    //turn_counter = 0;
-                    //ここにすうびょう松処理を入れる
-                    //main_program_2()
-                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                        play_count =0;
-                        ban_ban_counter = 0;
-                        ban = 2;
-                        //play_count = 0;
-                        kari_turn = 0;
-                        turn_counter = 0;
-                        //turn_change_counter = 0;
-                        push_counter = 0;
-                        write_koma();
-                        write_turn();
-                        //turn_counter = 0;
-                    write_koma();
-                    write_turn();
-                    //駒のデータ送信もここで行う
-                    //play_count = 0;
-                    //main_program_2()
-                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                    console.log("dddd"+ban);
-                    console.log(my_turn);
-                    count = 1;
-
-                }
-                if (ban == 2 && count !=1){
-                    //main_program_2()
-                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                        play_count =0;
-                        ban_ban_counter = 0;
-                        ban = 1;
-                        //play_count = 0;
-                        kari_turn = 0;
-                        //turn_change_counter = 0;
-                        turn_counter = 0;
-                        push_counter = 0;
-                        write_koma();
-                        write_turn();
-
-                        //turn_counter = 0;
-                    write_koma();
-                    write_turn();
-                    //play_count = 0;
-                    //main_program_2()
-                    //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                    console.log("dddd"+ban);
-
-                }
-    }else if (my_turn != ban &&count !=1){
-            //play_count = 1;
         if (ban == 1){
-            //turn_counter = 0;
+            turn_counter = 0;
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                play_count =0;
-                ban_ban_counter = 0;
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 300) {
                 ban = 2;
-                //play_count = 0;
-                kari_turn = 0;
-                turn_counter = 0;
-                //turn_change_counter = 0;
-                push_counter = 0;
                 write_koma();
                 write_turn();
-                //turn_counter = 0;
+                break;
+                }
+            }
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
-            //play_count = 0;
+
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
             console.log(my_turn);
             count = 1;
-
         }
         if (ban == 2 && count !=1){
+            turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                play_count =0;
-                ban_ban_counter = 0;
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 300) {
+                
                 ban = 1;
-                //play_count = 0;
-                kari_turn = 0;
-                //turn_change_counter = 0;
-                turn_counter = 0;
-                push_counter = 0;
                 write_koma();
                 write_turn();
-
-                //turn_counter = 0;
+                break;
+                }
+            }
             write_koma();
             write_turn();
-            //play_count = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
             console.log("dddd"+ban);
-
         }
     }
-}
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){
@@ -196,112 +127,70 @@ function get_mouse(e){
 }
 let frag = false;
 function get_mouse_button_fun(){
-    //main_program_2();
-    if (push_counter == 0){
-        if (my_turn == ban){
-            if(game_stage[mouse_list_y][mouse_list_x] == 0){
-                console.log(turn);
-                console.log("kkey"+turn)
-                mouse_click = 1;
-                if (my_turn == 1){
-                ///////////////////////////
-
-                        if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
-                            turn_change_counter = 0;
-                            if (ban_ban_counter == 0&& play_count !=0){
-                                play_count = 0;
-                            }
-                            play_count +=1;
-
-                            if (play_count <=1){
-                                osu_counter = 1;
-                                turn_counter = 1;
-                                kari_turn = 1;
-                                game_stage[mouse_list_y][mouse_list_x] = 1;
-                                //turn_change_counter = 0;
-                                push_counter = 1;
-
-                                //ban = 1;
-                                socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
-                                socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
-                                socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
-                                write_koma();
-                                write_turn();
-                                koma_oki = 1;
-                                ban_ban_counter = 1;
-                                //play_count = 0;
-
-                            }
-                    }
-                    /*
-                    const d1_2 = new Date();
-                    while (true) {
-                    const d2_2 = new Date();
-                    if (d2_2 - d1_2 > 50) {
-                        break;
-                        }
-                    }
-                    */
-                    //turn_counter = 1;
-
-                    //main_program_2()///
-
-
-            }else if (my_turn == 2){
-                ///////////////////////////////////////
+    main_program_2();
+    if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
+        console.log(turn);
+        console.log("kkey"+turn)
+        mouse_click = 1;
+        if (my_turn == 1){
+               ///////////////////////////
                 //sleep(1000);
-                    if (turn_counter == 0 &&koma_oki == 0&&kari_turn == 0){
-                        if (ban_ban_counter == 0&& play_count !=0){
-                            play_count = 0;
-                        }
-                        turn_change_counter = 0;
-                        play_count +=1;
-                        if (play_count <= 1){
-                            osu_counter = 1;
-                            turn_counter = 1;
-                            kari_turn = 1;
-                            game_stage[mouse_list_y][mouse_list_x] = 2;
-                            //turn_change_counter = 1;
-                            push_counter = 1;
-
-                            //ban = 2;
-                            socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
-                            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
-                            socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
-                            write_koma();
-                            write_turn();
-                            koma_oki = 1;
-                            ban_ban_counter = 1;
-                            //play_count = 0;
-                        }
-                    }
-                /*
-                const d1_3 = new Date();
+                const d1 = new Date();
                 while (true) {
-                const d2_3 = new Date();
-                if (d2_3 - d1_3 > 50) {
+                const d2 = new Date();
+                if (d2 - d1 > 100) {
+                    if (turn_counter == 0){
+                        game_stage[mouse_list_y][mouse_list_x] = 1;
+                        socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                        socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
+                        write_koma();
+                        write_turn();
+                        turn_counter = 1;
+                    }
                     break;
                     }
                 }
-                */
-                //turn_counter = 1
-                
-                        //game_stage[mouse_list_y][mouse_list_x] = 1;
+                //turn_counter = 1;
+
+                //main_program_2()///
+
+
+        }else if (my_turn == 2){
+            ///////////////////////////////////////
+            //sleep(1000);
+            const d1 = new Date();
+            while (true) {
+            const d2 = new Date();
+            if (d2 - d1 > 100) {
+                if (turn_counter == 0){
+                    game_stage[mouse_list_y][mouse_list_x] = 2;
+                    socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
+                    socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+                    socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
+                    write_koma();
+                    write_turn();
+                    turn_counter = 1;
                     
+                }
+                break;
+                }
             }
-            write_koma()
-            window.sessionStorage.setItem(['key3'],game_stage);
-            socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
-            //console.log("stage"+window.sessionStorage.getItem(['key3']))
-            //console.log(game_stage)
-            socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
-            //Jatch_win()
-            //setTimeout(3000);
-            //main_program_2();
-            main_program_3()
+
+            //turn_counter = 1
+            
+                    //game_stage[mouse_list_y][mouse_list_x] = 1;
+                
         }
+        write_koma()
+        window.sessionStorage.setItem(['key3'],game_stage);
+        socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
+        //console.log("stage"+window.sessionStorage.getItem(['key3']))
+        //console.log(game_stage)
+        socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
+        //Jatch_win()
+        //setTimeout(3000);
     }
-}
 
 }
 function maru_list(){
@@ -590,12 +479,10 @@ function main_program_2(){
     write_turn();
     let test_list_2 = [[0],[0],[0]];
     turn = window.sessionStorage.getItem(['key5']);
-
     if (window.sessionStorage.getItem(['key3'])){
         //console.log("aaaa");
         let test_list;
         window.sessionStorage.setItem(['k100'],game_stage);
-        let brfore_stage = window.sessionStorage.getItem(['k100']);
         test_list = window.sessionStorage.getItem(['key3']);//セッションに入ったやつは配列じゃなくなるから変換が必要
         let c1 =  test_list.substring(0,1);
         let c2 = test_list.substring(2,3);
@@ -629,126 +516,11 @@ function main_program_2(){
         */
         //console.log(game_stage);
         window.sessionStorage.setItem(['k90'],game_stage);
-        let after_stage = window.sessionStorage.getItem(['k90']);
         write_koma()
         if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
-            let koma_counter_1 = 0;
-            let koma_counter_2 = 0;
-            console.log("aaaaaaa");
-            console.log(brfore_stage);
-            console.log(after_stage)
-                for (let s =0;16>=s;s++){
-                  if (brfore_stage[s] == 1 || brfore_stage[s] == 2){
-                    console.log("aaa");
-                    koma_counter_1 = koma_counter_1 +1;
-                  }
-                  if (after_stage[s] == 1 || after_stage[s] == 2){
-                    console.log("bbb");
-                    koma_counter_2 = koma_counter_2 +1;
-                  }
-                }
-                console.log("ccccccccccccccccccccccc"+koma_counter_1);
-                console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
-                if (koma_counter_2>koma_counter_1){
-                    if (turn_change_counter == 0){
-                        socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                        window.sessionStorage.setItem(['k90'],"");
-                        window.sessionStorage.setItem(['k100'],"");
-                        turn_change_counter = 1;
-                        koma_oki = 0;
-                        play_count = 0;
-                }
-                }
-                
-
-        }
-            
-    }
-}
-function main_program_3(){
-    //write_koma()
-    let test_list_2 = [[0],[0],[0]];
-    turn = window.sessionStorage.getItem(['key5']);
-
-    if (window.sessionStorage.getItem(['key3'])){
-        //console.log("aaaa");
-        let test_list;
-        window.sessionStorage.setItem(['k100'],game_stage);
-        let brfore_stage = window.sessionStorage.getItem(['k100']);
-        test_list = window.sessionStorage.getItem(['key3']);//セッションに入ったやつは配列じゃなくなるから変換が必要
-        let c1 =  test_list.substring(0,1);
-        let c2 = test_list.substring(2,3);
-        let c3 = test_list.substring(4,5);
-        let c4 = test_list.substring(6,7);
-        let c5 = test_list.substring(8,9);
-        let c6 = test_list.substring(10,11);
-        let c7 = test_list.substring(12,13); 
-        let c8 = test_list.substring(14,15); 
-        let c9 = test_list.substring(16,17); 
-        //let c3 = test_list.substr(,18);
-        game_stage[0][0] = Number(c1);
-        game_stage[0][1] = Number(c2);
-        game_stage[0][2] = Number(c3);
-        game_stage[1][0] = Number(c4);
-        game_stage[1][1] = Number(c5);
-        game_stage[1][2] = Number(c6);
-        game_stage[2][0] = Number(c7);
-        game_stage[2][1] = Number(c8);
-        game_stage[2][2] = Number(c9);
-        /*
-        console.log(c1);
-        console.log(c2);
-        console.log(c3);
-        console.log(c4);
-        console.log(c5);
-        console.log(c6);
-        console.log(c7);
-        console.log(c8);
-        console.log(c9);
-        */
-        //console.log(game_stage);
-        window.sessionStorage.setItem(['k90'],game_stage);
-        let after_stage = window.sessionStorage.getItem(['k90']);
-        write_koma()
-        if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
-            let koma_counter_1 = 0;
-            let koma_counter_2 = 0;
-            console.log("aaaaaaa");
-            console.log(brfore_stage);
-            console.log(after_stage)
-                for (let s =0;16>=s;s++){
-                  if (brfore_stage[s] == 1 || brfore_stage[s] == 2){
-                    console.log("aaa");
-                    koma_counter_1 = koma_counter_1 +1;
-                  }
-                  if (after_stage[s] == 1 || after_stage[s] == 2){
-                    console.log("bbb");
-                    koma_counter_2 = koma_counter_2 +1;
-                  }
-                }
-                console.log("ccccccccccccccccccccccc"+koma_counter_1);
-                console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
-                if (koma_counter_2>=koma_counter_1){
-                    if (turn_change_counter == 0){
-                        turn_change_counter = 1;
-                        socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                        window.sessionStorage.setItem(['k90'],"");
-                        window.sessionStorage.setItem(['k100'],"");
-
-                        koma_oki = 0;
-                        play_count = 0;
-                }
-                if (turn_change_counter !=1){
-                    socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                    window.sessionStorage.setItem(['k90'],"");
-                    window.sessionStorage.setItem(['k100'],"");
-                    turn_change_counter = 1;
-                    koma_oki = 0;
-                    play_count = 0;
-                }
-                }
-                
-
+            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+            window.sessionStorage.setItem(['k90'],"");
+            window.sessionStorage.setItem(['k100'],"");
         }
             
     }

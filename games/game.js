@@ -67,7 +67,7 @@ socket_1.on("end_koma_server",(mess)=>{
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
         //play_count = 0;
-        turn_change_counter = 0;
+        //turn_change_counter = 0;
         if (osu_counter = 1 && ban == my_turn){
                     //play_count = 1;
                 if (ban == 1){
@@ -207,10 +207,12 @@ function get_mouse_button_fun(){
                 ///////////////////////////
 
                         if (turn_counter == 0 &&koma_oki == 0 &&kari_turn ==0){
+                            turn_change_counter = 0;
                             if (ban_ban_counter == 0&& play_count !=0){
                                 play_count = 0;
                             }
                             play_count +=1;
+
                             if (play_count <=1){
                                 osu_counter = 1;
                                 turn_counter = 1;
@@ -252,6 +254,7 @@ function get_mouse_button_fun(){
                         if (ban_ban_counter == 0&& play_count !=0){
                             play_count = 0;
                         }
+                        turn_change_counter = 0;
                         play_count +=1;
                         if (play_count <= 1){
                             osu_counter = 1;

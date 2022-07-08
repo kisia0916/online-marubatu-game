@@ -69,10 +69,6 @@ socket_1.on("end_koma_server",(mess)=>{
         //play_count = 0;
         turn_change_counter = 0;
         if (osu_counter = 1 && ban == my_turn){
-                const d1 = new Date();
-                while (true) {
-                const d2 = new Date();
-                if (d2 - d1 > 100) {
                     //play_count = 1;
                 if (ban == 1){
                     //turn_counter = 0;
@@ -125,14 +121,7 @@ socket_1.on("end_koma_server",(mess)=>{
                     console.log("dddd"+ban);
 
                 }
-                    break;
-                    }
-                }
     }else if (my_turn != ban &&count !=1){
-        const d1 = new Date();
-        while (true) {
-        const d2 = new Date();
-        if (d2 - d1 > 100) {
             //play_count = 1;
         if (ban == 1){
             //turn_counter = 0;
@@ -185,9 +174,6 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
 
         }
-            break;
-            }
-        }   
     }
 }
 })

@@ -24,6 +24,7 @@ let mouse_list_y;
 let turn_counter = 0;
 let osu_counter = 0;
 let push_counter = 0;
+let test_turn_counter = 1;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -210,6 +211,7 @@ function get_mouse(e){
 let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
+    test_turn_counter = 1;
     if (push_counter == 0){
         if (my_turn == ban){
             if(game_stage[mouse_list_y][mouse_list_x] == 0){
@@ -657,13 +659,15 @@ function main_program_2(){
                 console.log("vvvvvvvvvvvvvvvv"+koma_counter_2);
                 if (koma_counter_2>koma_counter_1){
                     if (turn_change_counter == 0){
-                        socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                        window.sessionStorage.setItem(['k90'],"");
-                        window.sessionStorage.setItem(['k100'],"");
-                        turn_change_counter = 1;
-                        koma_oki = 0;
-                        play_count = 0;
-                        
+                        if (test_turn_counter == 1){
+                            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+                            window.sessionStorage.setItem(['k90'],"");
+                            window.sessionStorage.setItem(['k100'],"");
+                            turn_change_counter = 1;
+                            koma_oki = 0;
+                            play_count = 0;
+                            test_turn_counter = 0;
+                        }
                     }
                 }
                 

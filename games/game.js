@@ -49,7 +49,7 @@ socket_1.on("aite_nasi_1",(room)=>{
         test_list = null;
     }
 })
-*/
+*///plplplplp
 console.log(game_stage);
 //write_text();
 let ban = 1;

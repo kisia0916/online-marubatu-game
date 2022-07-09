@@ -17,7 +17,6 @@ let mouse_click = 0;
 let mouse_list_x;
 let mouse_list_y;
 let turn_counter = 0;
-let my_turn_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -55,9 +54,8 @@ write_line()
 ctx.fill();
 write_line()
 main_program()
-let count = 0;
 socket_1.on("end_koma_server",(mess)=>{
-
+    let count = 0;
     console.log(mess);
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
@@ -66,11 +64,10 @@ socket_1.on("end_koma_server",(mess)=>{
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                    ban = 2;
-                    //my_turn_counter = 1
-                    write_koma();
-                    write_turn();
-            
+                ban = 2;
+                write_koma();
+                write_turn();
+
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
@@ -86,11 +83,10 @@ socket_1.on("end_koma_server",(mess)=>{
             turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-                    
-                    ban = 1;
-                    //my_turn_counter = 1;
-                    write_koma();
-                    write_turn();
+                
+                ban = 1;
+                write_koma();
+                write_turn();
             write_koma();
             write_turn();
             //main_program_2()
@@ -120,7 +116,6 @@ let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
-        my_turn_counter = 0;
         console.log(turn);
         console.log("kkey"+turn)
         mouse_click = 1;
@@ -129,14 +124,13 @@ function get_mouse_button_fun(){
                 //sleep(1000);
                     if (turn_counter == 0){
                         game_stage[mouse_list_y][mouse_list_x] = 1;
-                        //my_turn_counter = 0;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
                         write_koma();
                         write_turn();
                         turn_counter = 1;
-                }
+                    }
                 //turn_counter = 1;
 
                 //main_program_2()///
@@ -145,9 +139,9 @@ function get_mouse_button_fun(){
         }else if (my_turn == 2){
             ///////////////////////////////////////
             //sleep(1000);
+
                 if (turn_counter == 0){
                     game_stage[mouse_list_y][mouse_list_x] = 2;
-                    //my_turn_counter = 0;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -155,7 +149,7 @@ function get_mouse_button_fun(){
                     write_turn();
                     turn_counter = 1;
                     
-            }
+                }
 
             //turn_counter = 1
             
@@ -498,13 +492,13 @@ function main_program_2(){
         window.sessionStorage.setItem(['k90'],game_stage);
         write_koma()
         if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
-                socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-                window.sessionStorage.setItem(['k90'],"");
-                window.sessionStorage.setItem(['k100'],"");
-            }
+            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+            window.sessionStorage.setItem(['k90'],"");
+            window.sessionStorage.setItem(['k100'],"");
         }
             
     }
+}
 function write_line(){
     ctx.strokeStyle = "#05a6a6";
     ctx.lineCap = "round"

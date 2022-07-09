@@ -55,8 +55,9 @@ write_line()
 ctx.fill();
 write_line()
 main_program()
+let count = 0;
 socket_1.on("end_koma_server",(mess)=>{
-    let count = 0;
+
     console.log(mess);
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
@@ -65,17 +66,11 @@ socket_1.on("end_koma_server",(mess)=>{
             //ここにすうびょう松処理を入れる
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 100) {
                     ban = 2;
                     //my_turn_counter = 1
                     write_koma();
                     write_turn();
-                    break;
-                }
-            }
+            
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
@@ -91,18 +86,11 @@ socket_1.on("end_koma_server",(mess)=>{
             turn_counter = 0;
             //main_program_2()
             //stage_update(game_stage,window.sessionStorage.getItem(['k2']))
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 100) {
                     
                     ban = 1;
                     //my_turn_counter = 1;
                     write_koma();
                     write_turn();
-                    break;
-                }
-            }
             write_koma();
             write_turn();
             //main_program_2()
@@ -139,10 +127,6 @@ function get_mouse_button_fun(){
         if (my_turn == 1){
                ///////////////////////////
                 //sleep(1000);
-                const d1 = new Date();
-                while (true) {
-                const d2 = new Date();
-                if (d2 - d1 > 100) {
                     if (turn_counter == 0){
                         game_stage[mouse_list_y][mouse_list_x] = 1;
                         //my_turn_counter = 0;
@@ -152,9 +136,6 @@ function get_mouse_button_fun(){
                         write_koma();
                         write_turn();
                         turn_counter = 1;
-                    }
-                    break;
-                    }
                 }
                 //turn_counter = 1;
 
@@ -164,10 +145,6 @@ function get_mouse_button_fun(){
         }else if (my_turn == 2){
             ///////////////////////////////////////
             //sleep(1000);
-            const d1 = new Date();
-            while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 100) {
                 if (turn_counter == 0){
                     game_stage[mouse_list_y][mouse_list_x] = 2;
                     //my_turn_counter = 0;
@@ -178,9 +155,6 @@ function get_mouse_button_fun(){
                     write_turn();
                     turn_counter = 1;
                     
-                }
-                break;
-                }
             }
 
             //turn_counter = 1
@@ -524,8 +498,6 @@ function main_program_2(){
         window.sessionStorage.setItem(['k90'],game_stage);
         write_koma()
         if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
-            if (my_turn_counter == 0){
-                my_turn_counter = 1;
                 socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
                 window.sessionStorage.setItem(['k90'],"");
                 window.sessionStorage.setItem(['k100'],"");
@@ -533,7 +505,6 @@ function main_program_2(){
         }
             
     }
-}
 function write_line(){
     ctx.strokeStyle = "#05a6a6";
     ctx.lineCap = "round"

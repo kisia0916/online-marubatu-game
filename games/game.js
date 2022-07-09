@@ -17,6 +17,7 @@ let mouse_click = 0;
 let mouse_list_x;
 let mouse_list_y;
 let turn_counter = 0;
+let my_turn_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
     [0,0,0],
@@ -67,11 +68,12 @@ socket_1.on("end_koma_server",(mess)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 300) {
-                ban = 2;
-                write_koma();
-                write_turn();
-                break;
+            if (d2 - d1 > 100) {
+                    ban = 2;
+                    //my_turn_counter = 1
+                    write_koma();
+                    write_turn();
+                    break;
                 }
             }
             write_koma();
@@ -92,12 +94,13 @@ socket_1.on("end_koma_server",(mess)=>{
             const d1 = new Date();
             while (true) {
             const d2 = new Date();
-            if (d2 - d1 > 300) {
-                
-                ban = 1;
-                write_koma();
-                write_turn();
-                break;
+            if (d2 - d1 > 100) {
+                    
+                    ban = 1;
+                    //my_turn_counter = 1;
+                    write_koma();
+                    write_turn();
+                    break;
                 }
             }
             write_koma();
@@ -129,6 +132,7 @@ let frag = false;
 function get_mouse_button_fun(){
     main_program_2();
     if (my_turn == ban && game_stage[mouse_list_y][mouse_list_x] == 0){
+        my_turn_counter = 0;
         console.log(turn);
         console.log("kkey"+turn)
         mouse_click = 1;
@@ -141,6 +145,7 @@ function get_mouse_button_fun(){
                 if (d2 - d1 > 100) {
                     if (turn_counter == 0){
                         game_stage[mouse_list_y][mouse_list_x] = 1;
+                        //my_turn_counter = 0;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -165,6 +170,7 @@ function get_mouse_button_fun(){
             if (d2 - d1 > 100) {
                 if (turn_counter == 0){
                     game_stage[mouse_list_y][mouse_list_x] = 2;
+                    //my_turn_counter = 0;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -518,9 +524,12 @@ function main_program_2(){
         window.sessionStorage.setItem(['k90'],game_stage);
         write_koma()
         if (window.sessionStorage.getItem(['k90']) != window.sessionStorage.getItem(['k100'])){
-            socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
-            window.sessionStorage.setItem(['k90'],"");
-            window.sessionStorage.setItem(['k100'],"");
+            if (my_turn_counter == 0){
+                my_turn_counter = 1;
+                socket_1.emit("end_koma",window.sessionStorage.getItem(['k2']));
+                window.sessionStorage.setItem(['k90'],"");
+                window.sessionStorage.setItem(['k100'],"");
+            }
         }
             
     }

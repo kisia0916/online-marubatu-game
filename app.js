@@ -112,6 +112,7 @@ app.get("/",(req,res)=>{
     res.sendFile(__dirname+"/views/index.html")
     console.log("1"+req.session.user);
     console.log("2"+req.session.user)
+    console.log("test");
     //console.log("t:"+global_user_id);
     //
     //req.session.user = "";
@@ -348,6 +349,7 @@ io.on("connection",(Socket_4)=>{
                 //console.log(room_list.get_stage());
                 io.emit("stage_update",room_list[i].get_stage(),room);
             }
+            
         }
     });
     Socket_4.on("turn_change_1",(room)=>{

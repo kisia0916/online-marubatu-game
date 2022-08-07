@@ -16,6 +16,7 @@ let j_drow = 0;
 let mouse_click = 0;
 let mouse_list_x;
 let mouse_list_y;
+let click_counter = 0;
 let turn_counter = 0;
 let my_turn = window.sessionStorage.getItem(['key4']);
 let game_stage = [
@@ -56,6 +57,7 @@ write_line()
 main_program()
 socket_1.on("end_koma_server",(mess)=>{
     let count = 0;
+    click_counter =0;
     console.log(mess);
     console.log("fffff"+window.sessionStorage.getItem(['k2']));
     if (mess == window.sessionStorage.getItem(['k2'])){
@@ -106,11 +108,13 @@ socket_1.on("distract_sesstion",(user)=>{
 });
 /////////////////////////////////////////////////////
 function get_mouse(e){
-    let mouse_posi = e.target.getBoundingClientRect();
-    moouse_x = e.clientX - mouse_posi.left;
-    moouse_y = e.clientY - mouse_posi.top;
-    mouse_list_x = Math.abs(Math.floor((moouse_x) / 200));
-    mouse_list_y = Math.abs(Math.floor((moouse_y) / 250));
+    if(click_counter==0){
+        let mouse_posi = e.target.getBoundingClientRect();
+        moouse_x = e.clientX - mouse_posi.left;
+        moouse_y = e.clientY - mouse_posi.top;
+        mouse_list_x = Math.abs(Math.floor((moouse_x) / 200));
+        mouse_list_y = Math.abs(Math.floor((moouse_y) / 250));
+    }
 }
 let frag = false;
 function get_mouse_button_fun(){
@@ -124,6 +128,7 @@ function get_mouse_button_fun(){
                 //sleep(1000);
                     if (turn_counter == 0){
                         game_stage[mouse_list_y][mouse_list_x] = 1;
+                        click_counter = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                         socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);
@@ -142,6 +147,7 @@ function get_mouse_button_fun(){
 
                 if (turn_counter == 0){
                     game_stage[mouse_list_y][mouse_list_x] = 2;
+                    click_counter = 1;
                     socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                     socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
                     socket_1.emit("test_data_send",window.sessionStorage.getItem(['k2']),ban);

@@ -36,6 +36,12 @@
         let user_data_input = document.getElementById("user_name");
         let test_send_form = document.getElementById("test_send_form");
         let my_room_id = null;
+        document.addEventListener('keydown', (event)=>{
+            console.log(event.key);
+            if (event.keyCode == 82){
+                document.location.reload()
+            }
+        })
         form.addEventListener("submit",function(e){
             e.preventDefault();
             socket.emit("start_match",global_id);

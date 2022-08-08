@@ -97,7 +97,7 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
         }
     }
-    check_error();
+    //check_error();
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){

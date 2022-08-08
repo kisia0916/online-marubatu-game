@@ -69,7 +69,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 ban = 2;
                 write_koma();
                 write_turn();
-                check_error();
+                
             write_koma();
             write_turn();
             //駒のデータ送信もここで行う
@@ -89,7 +89,7 @@ socket_1.on("end_koma_server",(mess)=>{
                 ban = 1;
                 write_koma();
                 write_turn();
-                check_error();
+                
             write_koma();
             write_turn();
             //main_program_2()
@@ -97,7 +97,7 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
         }
     }
-
+    check_error();
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){

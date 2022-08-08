@@ -96,6 +96,7 @@ socket_1.on("end_koma_server",(mess)=>{
             console.log("dddd"+ban);
         }
     }
+    check_error();
 })
 socket_1.on("distract_sesstion",(user)=>{
     if (window.sessionStorage.getItem(['k1']) == user){
@@ -127,7 +128,7 @@ function get_mouse_button_fun(){
                ///////////////////////////
                 //sleep(1000);
                     if (turn_counter == 0){
-                        game_stage[mouse_list_y][mouse_list_x] = 1;
+                        game_stage[mouse_list_y][mouse_list_x] = 1;/////////////////////////////
                         click_counter = 1;
                         socket_1.emit("turn_change_1",window.sessionStorage.getItem(['k2']));
                         socket_1.emit("stage_update",game_stage,window.sessionStorage.getItem(['k2']));
@@ -325,6 +326,42 @@ function up_button(){
     mouse_click = 0;
 
 }
+function check_error(){
+        let c = 0;
+        for (let i = 0;2>i;i++){
+            for (let s = 0;2>s;s++){
+                if (game_stage[i][s] == 1 || game_stage[i][s] == 2){
+                    c +=1;
+                }
+            }
+        }
+        if (ban ==1){
+            if(ban%2 == 0){
+                if (!alert('通信エラー')) {
+                    write_koma()
+                    window.sessionStorage.setItem(['k1'],"");
+                    window.sessionStorage.setItem(['k2'],"");
+                    window.sessionStorage.setItem(['key3'],"");
+                    window.sessionStorage.setItem(['key4'],"");
+                    window.sessionStorage.setItem(['key5'],"");
+                    location.href = "/";
+                }
+            }
+        }
+        if (ban ==2){
+            if(ban%2 != 0){
+                if (!alert('通信エラー')) {
+                    write_koma()
+                    window.sessionStorage.setItem(['k1'],"");
+                    window.sessionStorage.setItem(['k2'],"");
+                    window.sessionStorage.setItem(['key3'],"");
+                    window.sessionStorage.setItem(['key4'],"");
+                    window.sessionStorage.setItem(['key5'],"");
+                    location.href = "/";
+                }
+            }
+        }
+    }
 function alert_log_win(){
     //write_koma()
     write_koma()

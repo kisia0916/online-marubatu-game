@@ -204,14 +204,7 @@ function Jatch_win(){
                 }
             }
             */
-            if (game_stage[i][s] != 0){
-                drwo_count +=1;
-                if (drwo_count >=9){
-                    write_koma()
-                    alert_log_hikiwake()
-                    win_count=1;
-                }
-            }
+
             if (s == 1){
                 if (game_stage[i][s] == 1 && game_stage[i][s+1] == 1 && game_stage[i][s-1] == 1){
                     if (my_turn == 1){
@@ -318,7 +311,15 @@ function Jatch_win(){
                         win_count =1;
                     }
                 }
-
+                
+            }
+            if (game_stage[i][s] != 0 && win_count == 0){
+                drwo_count +=1;
+                if (drwo_count >=9){
+                    write_koma()
+                    alert_log_hikiwake()
+                    win_count=1;
+                }
             }
         }
     }
